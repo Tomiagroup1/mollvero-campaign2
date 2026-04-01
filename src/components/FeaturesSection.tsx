@@ -42,13 +42,9 @@ const features = [
 const FeaturesSection = () => {
   return (
     <section className="py-24 lg:py-32 bg-foreground relative overflow-hidden">
-      {/* Decorative background shapes */}
-      <svg className="absolute top-10 right-10 w-48 h-36 opacity-5" viewBox="0 0 313.32 233.44" fill="none">
-        <path d="M298.83,36.31c2.9,6.62,4.64,13.84,5.03,21.44l9.46,175.7H3.09s-6.95-13,0-19.94L200.15,17.79C217.41.64,242.24-4.58,264.94,4.18c15.59,6.02,27.52,17.57,33.87,32.1v.03Z" fill="hsl(var(--primary))" />
-      </svg>
-      <svg className="absolute bottom-10 left-10 w-40 h-48 opacity-5 rotate-45" viewBox="0 0 286.64 325.92" fill="none">
-        <path d="M62.44,325.92c-14.85,0-29.49-5.48-41.48-16.16C.06,291.08-5.8,262.63,6.05,237.29L111.86,11.05c4.49-9.56,15.92-13.71,25.53-9.27l146.77,181.11c5.48,9.06,1.4,19.26-7.68,24.74l-181.52,109.06c-10.27,6.16-21.46,9.21-32.53,9.21v.03Z" fill="hsl(var(--mollvero-green-light))" />
-      </svg>
+      {/* Subtle background blobs */}
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/5 blur-[100px]" />
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-mollvero-green-light/5 blur-[80px]" />
 
       <div className="container mx-auto px-6 lg:px-12 relative">
         <div className="text-center mb-16">
