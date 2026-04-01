@@ -1,5 +1,4 @@
 import heroImage from "@/assets/hero-furniture.jpg";
-import heroImage from "@/assets/hero-furniture.jpg";
 
 const HeroSection = () => {
 
