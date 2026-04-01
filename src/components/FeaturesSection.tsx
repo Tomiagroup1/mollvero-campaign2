@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { Hammer, Ruler, Clock } from "lucide-react";
 
 const features = [
@@ -24,11 +25,37 @@ const features = [
   },
 ];
 
+const useScrollReveal = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return { ref, isVisible };
+};
+
 const FeaturesSection = () => {
+  const heading = useScrollReveal();
+  const cards = [useScrollReveal(), useScrollReveal(), useScrollReveal()];
+
   return (
     <section className="py-24 lg:py-32 bg-muted/40 relative overflow-hidden">
       {/* Brand wave — top right */}
-      <svg className="absolute -top-6 -right-8 w-[320px] h-[250px] opacity-[0.18]" viewBox="0 0 296.82 235.71" fill="none">
+      <svg className="absolute -top-6 -right-8 w-[320px] h-[250px] opacity-[0.18] animate-float-slower" viewBox="0 0 296.82 235.71" fill="none">
         <path d="M141.26,235.71c-1.26,0-2.52-.05-3.81-.1-21.2-1.34-39.39-13.52-48.7-32.63L1.72,24.45C-2.39,16.03,1.11,5.85,9.55,1.72c8.44-4.1,18.59-.61,22.72,7.84l87.02,178.5c3.87,7.95,11.47,13.05,20.3,13.6,8.73.66,16.99-3.55,21.85-10.95L265.62,31.53c5.13-7.84,15.65-10.08,23.51-4.92,7.86,5.13,10.05,15.66,4.92,23.52l-104.17,159.19c-10.91,16.71-28.87,26.36-48.57,26.36l-.05.03Z" fill="hsl(var(--mollvero-yellow))" />
       </svg>
 
@@ -56,7 +83,15 @@ const FeaturesSection = () => {
       </svg>
 
       <div className="container mx-auto px-6 lg:px-12 relative">
-        <div className="text-center mb-16">
+        {/* Heading with scroll reveal */}
+        <div
+          ref={heading.ref}
+          className={`text-center mb-16 transition-all duration-700 ${
+            heading.isVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-12"
+          }`}
+        >
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-4">
             Prečo Mollvero
           </p>
@@ -66,12 +101,21 @@ const FeaturesSection = () => {
           </h2>
         </div>
 
+        {/* Cards with staggered scroll reveal */}
         <div className="grid md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <div
               key={feature.title}
-              className="group relative p-8 rounded-2xl bg-background border border-border hover:shadow-lg transition-all duration-500 hover:-translate-y-1"
-              style={{ animationDelay: `${index * 0.15}s` }}
+              ref={cards[index].ref}
+              className={`group relative p-8 rounded-2xl bg-background border border-border hover:shadow-lg transition-all duration-500 hover:-translate-y-1 ${
+                cards[index].isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-12"
+              }`}
+              style={{
+                transitionDelay: cards[index].isVisible ? `${index * 0.15 + 0.2}s` : "0s",
+                transitionDuration: "0.7s",
+              }}
             >
               <div
                 className={`w-14 h-14 ${feature.accent} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}

@@ -1,8 +1,48 @@
+import { useState, useEffect } from "react";
+import { ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-furniture.jpg";
 
+const useCountdown = (targetDate: Date) => {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    const tick = () => {
+      const now = new Date().getTime();
+      const diff = targetDate.getTime() - now;
+      if (diff <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+      setTimeLeft({
+        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((diff / (1000 * 60)) % 60),
+        seconds: Math.floor((diff / 1000) % 60),
+      });
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, [targetDate]);
+
+  return timeLeft;
+};
+
 const HeroSection = () => {
+  // Countdown 14 days from now
+  const [endDate] = useState(() => {
+    const d = new Date();
+    d.setDate(d.getDate() + 14);
+    return d;
+  });
+  const countdown = useCountdown(endDate);
+
   return (
-    <section className="min-h-screen pt-16 bg-background relative overflow-hidden">
+    <section className="min-h-screen pt-16 relative overflow-hidden bg-gradient-to-br from-background via-muted/30 to-mollvero-beige/20">
+      {/* Subtle warm radial glow behind text */}
+      <div className="absolute top-[20%] left-[15%] w-[500px] h-[500px] bg-primary/[0.04] rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[10%] right-[30%] w-[400px] h-[400px] bg-mollvero-yellow/[0.06] rounded-full blur-[100px] pointer-events-none" />
+
       {/* Brand wave — top left, floating */}
       <svg className="absolute -top-8 -left-12 w-[380px] h-[300px] opacity-[0.18] animate-float-slow" viewBox="0 0 296.82 235.71" fill="none">
         <path d="M141.26,235.71c-1.26,0-2.52-.05-3.81-.1-21.2-1.34-39.39-13.52-48.7-32.63L1.72,24.45C-2.39,16.03,1.11,5.85,9.55,1.72c8.44-4.1,18.59-.61,22.72,7.84l87.02,178.5c3.87,7.95,11.47,13.05,20.3,13.6,8.73.66,16.99-3.55,21.85-10.95L265.62,31.53c5.13-7.84,15.65-10.08,23.51-4.92,7.86,5.13,10.05,15.66,4.92,23.52l-104.17,159.19c-10.91,16.71-28.87,26.36-48.57,26.36l-.05.03Z" fill="hsl(var(--mollvero-green-light))" />
@@ -13,12 +53,12 @@ const HeroSection = () => {
         <path d="M0,16.73C0,7.49,7.49,0,16.73,0s16.73,7.49,16.73,16.73v379.76c0,9.24-7.49,16.73-16.73,16.73s-16.73-7.49-16.73-16.73V16.73Z" fill="hsl(var(--mollvero-beige))" />
       </svg>
 
-      {/* Brand swoosh — bottom right behind image, floating */}
+      {/* Brand swoosh — bottom right, floating */}
       <svg className="absolute bottom-0 right-[10%] w-[280px] h-[540px] opacity-[0.14] animate-float-slow" style={{ animationDelay: "2s" }} viewBox="0 0 229.89 446.69" fill="none">
         <path d="M50.34,446.69c-7.85,0-14.93-5.46-16.61-13.44L3.26,289.92c-10.66-50.12,5.16-101.24,42.29-136.69L201.13,4.7c6.79-6.48,17.53-6.22,24.04.53,6.5,6.77,6.27,17.5-.53,23.96L69.06,177.71c-28.57,27.29-40.73,66.6-32.54,105.18l30.46,143.33c1.95,9.16-3.92,18.16-13.11,20.1-1.19.26-2.37.37-3.55.37h.03Z" fill="hsl(var(--mollvero-yellow))" />
       </svg>
 
-      {/* Brand angular shape — mid right, floating */}
+      {/* Brand angular shape — mid, floating */}
       <svg className="absolute top-[15%] right-[42%] w-[160px] h-[180px] opacity-[0.10] rotate-[20deg] animate-float-slower" style={{ animationDelay: "3s" }} viewBox="0 0 253.17 288.09" fill="none">
         <path d="M55.32,288.09c-13.16,0-26.13-4.84-36.75-14.29C.06,257.29-5.14,232.14,5.36,209.74L99.11,9.77c3.98-8.45,14.1-12.12,22.62-8.19,8.51,3.95,12.21,14,8.25,22.45L36.23,223.98c-4.9,10.47-.58,19.57,5.09,24.62,5.67,5.05,15.26,8.3,25.2,2.38l160.82-96.4c8.07-4.82,18.53-2.25,23.38,5.73,4.85,8.01,2.27,18.37-5.77,23.21l-160.82,96.4c-9.1,5.44-19.01,8.14-28.82,8.14v.03Z" fill="hsl(var(--mollvero-blue-light))" />
       </svg>
@@ -28,14 +68,32 @@ const HeroSection = () => {
 
           {/* Left — text content */}
           <div className="relative z-10 lg:w-[55%] space-y-8 py-12 lg:py-0 lg:pr-8">
-            {/* Discount teaser — big animated entrance */}
+            {/* Discount teaser with shimmer */}
             <div className="opacity-0 animate-count-up">
               <div className="flex items-end gap-2">
-                <span className="text-[8rem] md:text-[11rem] lg:text-[13rem] font-bold leading-none text-primary tracking-tighter animate-pulse-soft">
+                <span
+                  className="text-[8rem] md:text-[11rem] lg:text-[13rem] font-bold leading-none tracking-tighter animate-shimmer"
+                  style={{
+                    background: "linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--mollvero-coral)) 25%, hsl(var(--primary-foreground)) 50%, hsl(var(--mollvero-coral)) 75%, hsl(var(--primary)) 100%)",
+                    backgroundSize: "200% 100%",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
                   30
                 </span>
                 <div className="pb-4 md:pb-6">
-                  <span className="text-4xl md:text-6xl font-bold text-primary animate-pulse-soft">%</span>
+                  <span
+                    className="text-4xl md:text-6xl font-bold animate-shimmer"
+                    style={{
+                      background: "linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--mollvero-coral)) 50%, hsl(var(--primary)) 100%)",
+                      backgroundSize: "200% 100%",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                    }}
+                  >%</span>
                   <p className="text-base md:text-lg font-semibold text-foreground mt-1">zľava</p>
                 </div>
               </div>
@@ -44,7 +102,7 @@ const HeroSection = () => {
               </p>
             </div>
 
-            {/* Headline — slide in from left */}
+            {/* Headline */}
             <div className="space-y-4 opacity-0 animate-slide-in-left" style={{ animationDelay: "0.4s" }}>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-[1.1]">
                 Prémiový nábytok
@@ -59,31 +117,55 @@ const HeroSection = () => {
               </p>
             </div>
 
-            {/* CTAs — scale up */}
+            {/* CTAs with enhanced hover */}
             <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-scale-up" style={{ animationDelay: "0.7s" }}>
               <a
                 href="https://mollvero.sk/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-base transition-all hover:scale-105 hover:shadow-xl hover:shadow-primary/25"
+                className="group/cta inline-flex items-center justify-center gap-2 px-10 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-base transition-all duration-300 hover:scale-[1.08] hover:shadow-2xl hover:shadow-primary/30 hover:brightness-110"
               >
                 Nakupovať so zľavou
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/cta:translate-x-1.5" strokeWidth={2.5} />
               </a>
               <a
                 href="https://mollvero.sk/konfigurator"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-full border-2 border-foreground/15 text-foreground font-semibold text-base transition-all hover:bg-foreground/5"
+                className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-full border-2 border-foreground/15 text-foreground font-semibold text-base transition-all duration-300 hover:bg-foreground/5 hover:border-foreground/25 hover:scale-105"
               >
                 3D Konfigurátor
               </a>
             </div>
+
+            {/* Countdown Timer */}
+            <div className="opacity-0 animate-fade-up" style={{ animationDelay: "1s" }}>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                Ponuka končí o:
+              </p>
+              <div className="flex gap-3">
+                {[
+                  { value: countdown.days, label: "dní" },
+                  { value: countdown.hours, label: "hod" },
+                  { value: countdown.minutes, label: "min" },
+                  { value: countdown.seconds, label: "sek" },
+                ].map((unit) => (
+                  <div key={unit.label} className="flex flex-col items-center">
+                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-foreground/[0.05] backdrop-blur-sm border border-border/60 flex items-center justify-center">
+                      <span className="text-xl md:text-2xl font-bold text-foreground tabular-nums">
+                        {String(unit.value).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <span className="text-[10px] uppercase tracking-wider text-muted-foreground mt-1.5 font-medium">
+                      {unit.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* Right — large hero image, slide in from right */}
+          {/* Right — large hero image */}
           <div className="relative lg:absolute lg:right-0 lg:top-0 lg:bottom-0 lg:w-[50%] opacity-0 animate-slide-in-right" style={{ animationDelay: "0.3s" }}>
             <img
               src={heroImage}
