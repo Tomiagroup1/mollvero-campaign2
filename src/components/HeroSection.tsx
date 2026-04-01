@@ -2,71 +2,86 @@ import heroImage from "@/assets/hero-furniture.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0">
-        <img
-          src={heroImage}
-          alt="Prémiový nábytok Mollvero"
-          className="w-full h-full object-cover"
-          width={1920}
-          height={1080}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-foreground/70 via-foreground/40 to-transparent" />
-      </div>
+    <section className="min-h-screen pt-16">
+      {/* Split layout */}
+      <div className="grid lg:grid-cols-2 min-h-[calc(100vh-4rem)]">
+        {/* Left — Content on pastel background */}
+        <div className="flex flex-col justify-center px-8 md:px-16 lg:px-20 py-16 bg-secondary/40 relative overflow-hidden">
+          {/* Decorative circles */}
+          <div className="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-mollvero-beige/40 blur-2xl" />
+          <div className="absolute bottom-10 right-10 w-48 h-48 rounded-full bg-mollvero-blue-light/30 blur-2xl" />
 
-      {/* Decorative brand shape */}
-      <div className="absolute -right-32 -bottom-32 w-[500px] h-[500px] rounded-full bg-mollvero-green-light/10 blur-3xl" />
+          <div className="relative space-y-8 max-w-lg">
+            {/* Discount pill */}
+            <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-5 py-2 animate-fade-up">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              <span className="text-sm font-semibold text-primary">Limitovaná akcia · -30%</span>
+            </div>
 
-      {/* Content */}
-      <div className="relative container mx-auto px-6 lg:px-12 py-32">
-        <div className="max-w-2xl space-y-8">
-          <p className="text-primary-foreground/80 text-sm font-semibold uppercase tracking-[0.2em] animate-fade-up">
-            Limitovaná akcia
-          </p>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1] animate-fade-up" style={{ animationDelay: '0.1s' }}>
+              Nábytok,
+              <br />
+              ktorý
+              <br />
+              <span className="font-script font-normal text-primary text-5xl md:text-7xl lg:text-8xl">vydrží</span>
+            </h1>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground leading-[0.95] animate-fade-up" style={{ animationDelay: '0.1s' }}>
-            Exkluzívna
-            <br />
-            <span className="font-script font-normal text-primary">ponuka</span>
-          </h1>
+            <p className="text-muted-foreground text-lg leading-relaxed animate-fade-up" style={{ animationDelay: '0.2s' }}>
+              Prémiový nábytok na mieru od slovenského výrobcu.
+              Masívne drevo, ručná výroba a 3D návrh zdarma.
+            </p>
 
-          <p className="text-primary-foreground/70 text-lg md:text-xl max-w-md leading-relaxed animate-fade-up" style={{ animationDelay: '0.2s' }}>
-            Doprajte si prémiovú kvalitu Mollvero za výnimočnú cenu. 
-            Elegantný dizajn, nadčasové materiály a ručná výroba.
-          </p>
+            <div className="flex flex-col sm:flex-row gap-3 animate-fade-up" style={{ animationDelay: '0.3s' }}>
+              <a
+                href="https://mollvero.sk/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
+              >
+                Vstúpte do eshopu
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </a>
+              <a
+                href="https://mollvero.sk/konfigurator"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-foreground/15 text-foreground font-semibold transition-all hover:bg-foreground/5"
+              >
+                Konfigurátor
+              </a>
+            </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 animate-fade-up" style={{ animationDelay: '0.3s' }}>
-            <a
-              href="https://mollvero.sk/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-base transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
-            >
-              Vstúpte do eshopu
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-              </svg>
-            </a>
-            <a
-              href="https://mollvero.sk/konfigurator"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-primary-foreground/30 text-primary-foreground font-semibold text-base transition-all hover:bg-primary-foreground/10"
-            >
-              Konfigurátor
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-              </svg>
-            </a>
+            {/* Trust badges */}
+            <div className="flex items-center gap-6 pt-4 animate-fade-up" style={{ animationDelay: '0.4s' }}>
+              {[
+                { val: "19+", label: "rokov" },
+                { val: "3D", label: "návrh" },
+                { val: "12", label: "dní dodanie" },
+              ].map((b) => (
+                <div key={b.label} className="text-center">
+                  <p className="text-2xl font-bold text-foreground">{b.val}</p>
+                  <p className="text-xs text-muted-foreground">{b.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
+        </div>
 
-          {/* Discount badge */}
-          <div className="inline-flex items-center gap-3 bg-primary-foreground/10 backdrop-blur-md rounded-full px-6 py-3 animate-fade-up" style={{ animationDelay: '0.4s' }}>
-            <span className="text-4xl font-bold text-primary">30%</span>
-            <span className="text-primary-foreground/80 text-sm leading-tight">
-              zľava na<br />všetok nábytok
-            </span>
+        {/* Right — Hero image */}
+        <div className="relative overflow-hidden">
+          <img
+            src={heroImage}
+            alt="Prémiový nábytok Mollvero – moderná obývačka"
+            className="w-full h-full object-cover"
+            width={1920}
+            height={1080}
+          />
+          {/* Floating badge on image */}
+          <div className="absolute bottom-8 left-8 bg-background/90 backdrop-blur-md rounded-2xl p-6 shadow-xl max-w-[260px]">
+            <p className="text-4xl font-bold text-primary">30%</p>
+            <p className="text-sm text-muted-foreground mt-1">zľava na všetok nábytok z aktuálnej kolekcie</p>
           </div>
         </div>
       </div>
