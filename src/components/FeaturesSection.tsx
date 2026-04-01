@@ -33,7 +33,7 @@ const FeaturesSection = () => {
       </svg>
 
       {/* Brand vertical bars — right side */}
-      <svg className="absolute top-16 right-12 w-[18px] h-[240px] opacity-[0.10]" viewBox="0 0 33.47 413.22" fill="none">
+      <svg className="absolute top-16 right-12 w-[18px] h-[240px] opacity-[0.16]" viewBox="0 0 33.47 413.22" fill="none">
         <path d="M0,16.73C0,7.49,7.49,0,16.73,0s16.73,7.49,16.73,16.73v379.76c0,9.24-7.49,16.73-16.73,16.73s-16.73-7.49-16.73-16.73V16.73Z" fill="hsl(var(--mollvero-green-light))" />
       </svg>
       <svg className="absolute top-24 right-6 w-[14px] h-[180px] opacity-[0.07]" viewBox="0 0 33.47 413.22" fill="none">
