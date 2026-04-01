@@ -1,41 +1,7 @@
-import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-furniture.jpg";
 
-const useCountdown = (targetDate: Date) => {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-
-  useEffect(() => {
-    const tick = () => {
-      const now = new Date().getTime();
-      const diff = targetDate.getTime() - now;
-      if (diff <= 0) {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        return;
-      }
-      setTimeLeft({
-        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((diff / (1000 * 60)) % 60),
-        seconds: Math.floor((diff / 1000) % 60),
-      });
-    };
-    tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, [targetDate]);
-
-  return timeLeft;
-};
-
 const HeroSection = () => {
-  // Countdown 14 days from now
-  const [endDate] = useState(() => {
-    const d = new Date();
-    d.setDate(d.getDate() + 14);
-    return d;
-  });
-  const countdown = useCountdown(endDate);
 
   return (
     <section className="min-h-screen pt-16 relative overflow-hidden bg-gradient-to-br from-background via-muted/30 to-mollvero-beige/20">
