@@ -3,10 +3,11 @@ import heroImage from "@/assets/hero-furniture.jpg";
 const HeroSection = () => {
   return (
     <section className="min-h-screen pt-16 bg-background relative overflow-hidden">
-      {/* Subtle background blobs */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-mollvero-green-light/8 blur-[120px]" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-mollvero-beige/10 blur-[100px]" />
-      <div className="absolute top-1/2 right-1/4 w-[300px] h-[300px] rounded-full bg-mollvero-blue-light/6 blur-[80px]" />
+      {/* Visible decorative colored circles */}
+      <div className="absolute -top-32 -left-32 w-[450px] h-[450px] rounded-full bg-mollvero-green-light/20" />
+      <div className="absolute -bottom-20 -right-20 w-[350px] h-[350px] rounded-full bg-mollvero-beige/25" />
+      <div className="absolute top-1/3 right-[15%] w-[200px] h-[200px] rounded-full bg-mollvero-blue-light/15" />
+      <div className="absolute bottom-1/4 left-[20%] w-[120px] h-[120px] rounded-full bg-mollvero-yellow/20" />
 
       <div className="container mx-auto px-6 lg:px-12 relative">
         <div className="grid lg:grid-cols-12 gap-8 items-center min-h-[calc(100vh-4rem)] py-12">
@@ -67,20 +68,21 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Right — Image with shape overlay, 5 cols */}
+          {/* Right — Image, 5 cols */}
           <div className="lg:col-span-5 relative animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            {/* Main image in organic shape clip */}
             <div className="relative">
               <div className="rounded-[2rem] overflow-hidden shadow-2xl">
                 <img
                   src={heroImage}
-                  alt="Prémiový nábytok Mollvero – moderná obývačka"
+                  alt="Prémiový nábytok Mollvero – vstavaná skriňa s dreveným obkladom"
                   className="w-full aspect-[3/4] object-cover"
                   width={800}
                   height={1067}
                 />
               </div>
-            
+              {/* Accent circle behind image */}
+              <div className="absolute -bottom-8 -left-8 w-40 h-40 rounded-full bg-mollvero-coral/20 -z-10" />
+              <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-mollvero-green-light/25 -z-10" />
             </div>
           </div>
         </div>
