@@ -3,19 +3,10 @@ import heroImage from "@/assets/hero-furniture.jpg";
 const HeroSection = () => {
   return (
     <section className="min-h-screen pt-16 bg-background relative overflow-hidden">
-      {/* Brand decorative shapes */}
-      <svg className="absolute top-20 -left-16 w-64 h-48 opacity-15" viewBox="0 0 313.32 233.44" fill="none">
-        <path d="M298.83,36.31c2.9,6.62,4.64,13.84,5.03,21.44l9.46,175.7H3.09s-6.95-13,0-19.94L200.15,17.79C217.41.64,242.24-4.58,264.94,4.18c15.59,6.02,27.52,17.57,33.87,32.1v.03Z" fill="hsl(var(--mollvero-green-light))" />
-      </svg>
-      <svg className="absolute bottom-32 -right-10 w-56 h-44 opacity-15 rotate-45" viewBox="0 0 324.47 254.63" fill="none">
-        <path d="M154.41,254.63c-1.38,0-2.76-.06-4.17-.11-23.17-1.46-43.06-14.72-53.24-35.5L1.88,24.74C-2.61,15.58,1.22,4.5,10.44,0l305.62,27.09c8.59,5.58,10.98,17.04,5.37,25.6l-113.87,173.23c-11.93,18.18-31.57,28.69-53.1,28.69l-.06.03Z" fill="hsl(var(--mollvero-yellow))" />
-      </svg>
-      <svg className="absolute top-1/2 left-1/3 w-8 h-80 opacity-10 -rotate-12" viewBox="0 0 33.47 413.22" fill="none">
-        <path d="M0,16.73C0,7.49,7.49,0,16.73,0s16.73,7.49,16.73,16.73v379.76c0,9.24-7.49,16.73-16.73,16.73s-16.73-7.49-16.73-16.73V16.73Z" fill="hsl(var(--mollvero-beige))" />
-      </svg>
-      <svg className="absolute top-40 right-1/4 w-40 h-48 opacity-10 rotate-12" viewBox="0 0 286.64 325.92" fill="none">
-        <path d="M62.44,325.92c-14.85,0-29.49-5.48-41.48-16.16C.06,291.08-5.8,262.63,6.05,237.29L111.86,11.05c4.49-9.56,15.92-13.71,25.53-9.27l146.77,181.11c5.48,9.06,1.4,19.26-7.68,24.74l-181.52,109.06c-10.27,6.16-21.46,9.21-32.53,9.21v.03Z" fill="hsl(var(--mollvero-blue-light))" />
-      </svg>
+      {/* Subtle background blobs */}
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-mollvero-green-light/8 blur-[120px]" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-mollvero-beige/10 blur-[100px]" />
+      <div className="absolute top-1/2 right-1/4 w-[300px] h-[300px] rounded-full bg-mollvero-blue-light/6 blur-[80px]" />
 
       <div className="container mx-auto px-6 lg:px-12 relative">
         <div className="grid lg:grid-cols-12 gap-8 items-center min-h-[calc(100vh-4rem)] py-12">
@@ -89,13 +80,7 @@ const HeroSection = () => {
                   height={1067}
                 />
               </div>
-              {/* Floating accent shape */}
-              <svg className="absolute -bottom-6 -left-6 w-28 h-20" viewBox="0 0 313.32 233.44" fill="none">
-                <path d="M298.83,36.31c2.9,6.62,4.64,13.84,5.03,21.44l9.46,175.7H3.09s-6.95-13,0-19.94L200.15,17.79C217.41.64,242.24-4.58,264.94,4.18c15.59,6.02,27.52,17.57,33.87,32.1v.03Z" fill="hsl(var(--mollvero-coral))" />
-              </svg>
-              <svg className="absolute -top-4 -right-4 w-20 h-16" viewBox="0 0 324.47 254.63" fill="none">
-                <path d="M154.41,254.63c-1.38,0-2.76-.06-4.17-.11-23.17-1.46-43.06-14.72-53.24-35.5L1.88,24.74C-2.61,15.58,1.22,4.5,10.44,0l305.62,27.09c8.59,5.58,10.98,17.04,5.37,25.6l-113.87,173.23c-11.93,18.18-31.57,28.69-53.1,28.69l-.06.03Z" fill="hsl(var(--mollvero-green-light))" />
-              </svg>
+            
             </div>
           </div>
         </div>
