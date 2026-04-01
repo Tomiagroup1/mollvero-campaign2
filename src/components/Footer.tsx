@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <a href="https://mollvero.sk/" target="_blank" rel="noopener noreferrer">
-            <img src={logo} alt="Mollvero" className="h-8 brightness-0 invert" />
+            <img src={logo} alt="Mollvero" className="h-16" />
           </a>
           <div className="flex items-center gap-6 text-primary-foreground/50 text-sm">
             <a href="https://mollvero.sk/" target="_blank" rel="noopener noreferrer" className="hover:text-primary-foreground transition-colors">
