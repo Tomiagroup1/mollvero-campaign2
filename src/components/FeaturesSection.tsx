@@ -7,6 +7,11 @@ const features = [
     description:
       "Každý kus nábytku je vyrobený s precíznosťou a láskou k remeslu. Masívne drevo a prvotriedne materiály.",
     accent: "bg-mollvero-green-light",
+    shape: (
+      <svg className="absolute -top-3 -right-3 w-14 h-10 opacity-20" viewBox="0 0 313.32 233.44" fill="none">
+        <path d="M298.83,36.31c2.9,6.62,4.64,13.84,5.03,21.44l9.46,175.7H3.09s-6.95-13,0-19.94L200.15,17.79C217.41.64,242.24-4.58,264.94,4.18c15.59,6.02,27.52,17.57,33.87,32.1v.03Z" fill="hsl(var(--mollvero-green-light))" />
+      </svg>
+    ),
   },
   {
     icon: Ruler,
@@ -14,6 +19,11 @@ const features = [
     description:
       "Nábytok prispôsobený vášmu priestoru a štýlu. 3D návrh zdarma pre dokonalú predstavu.",
     accent: "bg-mollvero-beige",
+    shape: (
+      <svg className="absolute -top-3 -right-3 w-14 h-10 opacity-20" viewBox="0 0 324.47 254.63" fill="none">
+        <path d="M154.41,254.63c-1.38,0-2.76-.06-4.17-.11-23.17-1.46-43.06-14.72-53.24-35.5L1.88,24.74C-2.61,15.58,1.22,4.5,10.44,0l305.62,27.09c8.59,5.58,10.98,17.04,5.37,25.6l-113.87,173.23c-11.93,18.18-31.57,28.69-53.1,28.69l-.06.03Z" fill="hsl(var(--mollvero-beige))" />
+      </svg>
+    ),
   },
   {
     icon: Clock,
@@ -21,15 +31,24 @@ const features = [
     description:
       "Viac ako 25 rokov skúseností s výrobou nábytku na Slovensku. Rodinná firma s tradíciou.",
     accent: "bg-mollvero-blue-light",
+    shape: (
+      <svg className="absolute -top-3 -right-3 w-12 h-14 opacity-20" viewBox="0 0 286.64 325.92" fill="none">
+        <path d="M62.44,325.92c-14.85,0-29.49-5.48-41.48-16.16C.06,291.08-5.8,262.63,6.05,237.29L111.86,11.05c4.49-9.56,15.92-13.71,25.53-9.27l146.77,181.11c5.48,9.06,1.4,19.26-7.68,24.74l-181.52,109.06c-10.27,6.16-21.46,9.21-32.53,9.21v.03Z" fill="hsl(var(--mollvero-blue-light))" />
+      </svg>
+    ),
   },
 ];
 
 const FeaturesSection = () => {
   return (
     <section className="py-24 lg:py-32 bg-muted/40 relative overflow-hidden">
-      {/* Decorative circles */}
-      <div className="absolute -top-20 -right-20 w-[300px] h-[300px] rounded-full bg-mollvero-green-light/10" />
-      <div className="absolute -bottom-16 -left-16 w-[250px] h-[250px] rounded-full bg-mollvero-beige/15" />
+      {/* Brand shapes background */}
+      <svg className="absolute top-8 right-8 w-[180px] h-[140px] opacity-[0.05]" viewBox="0 0 313.32 233.44" fill="none">
+        <path d="M298.83,36.31c2.9,6.62,4.64,13.84,5.03,21.44l9.46,175.7H3.09s-6.95-13,0-19.94L200.15,17.79C217.41.64,242.24-4.58,264.94,4.18c15.59,6.02,27.52,17.57,33.87,32.1v.03Z" fill="hsl(var(--primary))" />
+      </svg>
+      <svg className="absolute bottom-8 left-8 w-[150px] h-[180px] opacity-[0.05] rotate-45" viewBox="0 0 286.64 325.92" fill="none">
+        <path d="M62.44,325.92c-14.85,0-29.49-5.48-41.48-16.16C.06,291.08-5.8,262.63,6.05,237.29L111.86,11.05c4.49-9.56,15.92-13.71,25.53-9.27l146.77,181.11c5.48,9.06,1.4,19.26-7.68,24.74l-181.52,109.06c-10.27,6.16-21.46,9.21-32.53,9.21v.03Z" fill="hsl(var(--mollvero-green-light))" />
+      </svg>
 
       <div className="container mx-auto px-6 lg:px-12 relative">
         <div className="text-center mb-16">
@@ -49,6 +68,7 @@ const FeaturesSection = () => {
               className="group relative p-8 rounded-2xl bg-background border border-border hover:shadow-lg transition-all duration-500 hover:-translate-y-1"
               style={{ animationDelay: `${index * 0.15}s` }}
             >
+              {feature.shape}
               <div
                 className={`w-14 h-14 ${feature.accent} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}
               >
