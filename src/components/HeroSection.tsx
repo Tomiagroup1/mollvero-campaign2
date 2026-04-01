@@ -1,4 +1,3 @@
-import { ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-furniture.jpg";
 
 const HeroSection = () => {
@@ -92,7 +91,6 @@ const HeroSection = () => {
                 className="group/cta inline-flex items-center justify-center gap-2 px-10 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-base transition-all duration-300 hover:scale-[1.08] hover:shadow-2xl hover:shadow-primary/30 hover:brightness-110"
               >
                 Nakupovať so zľavou
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/cta:translate-x-1.5" strokeWidth={2.5} />
               </a>
               <a
                 href="https://mollvero.sk/konfigurator"
