@@ -94,12 +94,48 @@ export default {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
+        "slide-in-left": {
+          "0%": { opacity: "0", transform: "translateX(-60px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        "slide-in-right": {
+          "0%": { opacity: "0", transform: "translateX(60px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        "float-slow": {
+          "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
+          "50%": { transform: "translateY(-20px) rotate(3deg)" },
+        },
+        "float-slower": {
+          "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
+          "50%": { transform: "translateY(-12px) rotate(-2deg)" },
+        },
+        "scale-up": {
+          "0%": { opacity: "0", transform: "scale(0.7)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
+        "pulse-soft": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.7" },
+        },
+        "count-up": {
+          "0%": { opacity: "0", transform: "translateY(40px) scale(0.8)" },
+          "60%": { opacity: "1", transform: "translateY(-5px) scale(1.02)" },
+          "100%": { opacity: "1", transform: "translateY(0) scale(1)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-up": "fade-up 0.8s ease-out forwards",
         "fade-in": "fade-in 0.6s ease-out forwards",
+        "slide-in-left": "slide-in-left 0.9s ease-out forwards",
+        "slide-in-right": "slide-in-right 0.9s ease-out forwards",
+        "float-slow": "float-slow 6s ease-in-out infinite",
+        "float-slower": "float-slower 8s ease-in-out infinite",
+        "scale-up": "scale-up 0.7s ease-out forwards",
+        "pulse-soft": "pulse-soft 2.5s ease-in-out infinite",
+        "count-up": "count-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards",
       },
     },
   },
