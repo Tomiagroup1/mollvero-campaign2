@@ -9,7 +9,7 @@ const HeroSection = () => {
       </svg>
 
       {/* Brand vertical bar — left edge */}
-      <svg className="absolute top-[30%] -left-1 w-[20px] h-[280px] opacity-[0.10]" viewBox="0 0 33.47 413.22" fill="none">
+      <svg className="absolute top-[30%] -left-1 w-[20px] h-[280px] opacity-[0.16]" viewBox="0 0 33.47 413.22" fill="none">
         <path d="M0,16.73C0,7.49,7.49,0,16.73,0s16.73,7.49,16.73,16.73v379.76c0,9.24-7.49,16.73-16.73,16.73s-16.73-7.49-16.73-16.73V16.73Z" fill="hsl(var(--mollvero-beige))" />
       </svg>
 
