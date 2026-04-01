@@ -90,10 +90,6 @@ const HeroSection = () => {
               alt="Prémiový nábytok Mollvero – vstavaná skriňa s dreveným obkladom"
               className="w-full h-full min-h-[400px] lg:min-h-full object-cover lg:rounded-l-[3rem] rounded-[2rem] lg:rounded-r-none"
             />
-            {/* Brand shape accent on image edge */}
-            <svg className="absolute -bottom-6 -left-8 w-20 h-16 opacity-30" viewBox="0 0 313.32 233.44" fill="none">
-              <path d="M298.83,36.31c2.9,6.62,4.64,13.84,5.03,21.44l9.46,175.7H3.09s-6.95-13,0-19.94L200.15,17.79C217.41.64,242.24-4.58,264.94,4.18c15.59,6.02,27.52,17.57,33.87,32.1v.03Z" fill="hsl(var(--mollvero-coral))" />
-            </svg>
           </div>
         </div>
       </div>
