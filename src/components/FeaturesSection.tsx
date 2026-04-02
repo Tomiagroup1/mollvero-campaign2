@@ -136,7 +136,7 @@ const FeatureRow = ({ feature, index }: FeatureRowProps) => {
   return (
     <div
       ref={row.ref}
-      className={`relative flex flex-col md:flex-row items-center gap-8 md:gap-16 transition-all duration-700 ease-out ${
+      className={`relative flex flex-col md:flex-row items-center gap-4 md:gap-8 transition-all duration-700 ease-out ${
         row.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
       }`}
       style={{ transitionDelay: row.isVisible ? `${index * 0.08}s` : "0s" }}
