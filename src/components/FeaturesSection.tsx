@@ -24,50 +24,25 @@ const useScrollReveal = () => {
   return { ref, isVisible };
 };
 
-const features = [
-  {
-    icon: Truck,
-    title: "Dodanie do 14 dní",
-    desc: "Váš nábytok na mieru u vás doma za dva týždne. Konkurencia čaká mesiace.",
-    wide: true,
-  },
-  {
-    icon: Monitor,
-    title: "Online konfigurátor",
-    desc: "Prispôsobte si rozmery, materiály aj farby priamo v prehliadači.",
-    wide: false,
-  },
-  {
-    icon: TreePine,
-    title: "Kvalita z masívu",
-    desc: "Ekologický prístup, udržateľné materiály, minimálny odpad.",
-    wide: false,
-  },
-  {
-    icon: Package,
-    title: "Dovoz a montáž",
-    desc: "Bez stresu — dovezieme a montáž je hračka.",
-    wide: false,
-  },
-  {
-    icon: Factory,
-    title: "Slovenský výrobca",
-    desc: "Žiadni prostredníci. Férové ceny, priama komunikácia.",
-    wide: false,
-  },
-];
-
 const FeaturesSection = () => {
   const heading = useScrollReveal();
   const grid = useScrollReveal();
 
   return (
-    <section className="py-20 lg:py-28 bg-muted/30">
-      <div className="container mx-auto px-6 lg:px-12">
+    <section className="py-28 lg:py-40 bg-muted/30 relative overflow-hidden">
+      {/* Decorative SVGs */}
+      <svg className="absolute -top-6 -right-8 w-[320px] h-[250px] opacity-[0.18] animate-float-slower" viewBox="0 0 296.82 235.71" fill="none">
+        <path d="M141.26,235.71c-1.26,0-2.52-.05-3.81-.1-21.2-1.34-39.39-13.52-48.7-32.63L1.72,24.45C-2.39,16.03,1.11,5.85,9.55,1.72c8.44-4.1,18.59-.61,22.72,7.84l87.02,178.5c3.87,7.95,11.47,13.05,20.3,13.6,8.73.66,16.99-3.55,21.85-10.95L265.62,31.53c5.13-7.84,15.65-10.08,23.51-4.92,7.86,5.13,10.05,15.66,4.92,23.52l-104.17,159.19c-10.91,16.71-28.87,26.36-48.57,26.36l-.05.03Z" fill="hsl(var(--mollvero-yellow))" />
+      </svg>
+      <svg className="absolute -bottom-8 -left-6 w-[220px] h-[420px] opacity-[0.14]" viewBox="0 0 229.89 446.69" fill="none">
+        <path d="M50.34,446.69c-7.85,0-14.93-5.46-16.61-13.44L3.26,289.92c-10.66-50.12,5.16-101.24,42.29-136.69L201.13,4.7c6.79-6.48,17.53-6.22,24.04.53,6.5,6.77,6.27,17.5-.53,23.96L69.06,177.71c-28.57,27.29-40.73,66.6-32.54,105.18l30.46,143.33c1.95,9.16-3.92,18.16-13.11,20.1-1.19.26-2.37.37-3.55.37h.03Z" fill="hsl(var(--mollvero-blue-light))" />
+      </svg>
+
+      <div className="container mx-auto px-6 lg:px-12 relative">
         {/* Heading */}
         <div
           ref={heading.ref}
-          className={`text-center mb-14 lg:mb-16 transition-all duration-700 ${heading.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
+          className={`text-center mb-16 lg:mb-20 transition-all duration-700 ${heading.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
         >
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-4">
             Prečo Mollvero
@@ -78,39 +53,82 @@ const FeaturesSection = () => {
           </h2>
         </div>
 
-        {/* Grid */}
+        {/* Bento Grid */}
         <div
           ref={grid.ref}
-          className={`space-y-6 transition-all duration-700 ${grid.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"}`}
+          className={`grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-5 auto-rows-[minmax(180px,auto)] transition-all duration-700 ${grid.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"}`}
         >
-          {/* Row 1: 2:1 ratio */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {features.slice(0, 2).map((f, i) => (
-              <div
-                key={i}
-                className={`${i === 0 ? "md:col-span-2" : "md:col-span-1"} rounded-xl border border-black/[0.05] bg-background p-6 lg:p-8 flex flex-col gap-3 transition-shadow duration-500 hover:shadow-md`}
-                style={{ transitionDelay: grid.isVisible ? `${i * 0.1 + 0.1}s` : "0s" }}
-              >
-                <f.icon className="w-7 h-7 text-primary" strokeWidth={1.5} />
-                <h3 className="text-lg font-bold text-foreground leading-tight">{f.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
-              </div>
-            ))}
+          {/* Tile 1 — Large hero tile: 14 dní (spans 2 cols, 2 rows) */}
+          <div
+            className="col-span-2 row-span-2 rounded-3xl bg-mollvero-coral/10 border border-border p-8 lg:p-10 flex flex-col justify-between group hover:shadow-lg transition-shadow duration-500"
+            style={{ transitionDelay: grid.isVisible ? "0.1s" : "0s" }}
+          >
+            <Truck className="w-10 h-10 text-mollvero-coral mb-4" strokeWidth={1.4} />
+            <div>
+              <p className="text-6xl lg:text-8xl font-bold text-foreground leading-none mb-3">
+                14 <span className="text-primary font-script font-normal text-5xl lg:text-7xl">dní</span>
+              </p>
+              <p className="text-lg lg:text-xl font-semibold text-foreground mb-1">Dodanie do 14 dní</p>
+              <p className="text-muted-foreground leading-relaxed">
+                Váš nábytok na mieru u vás doma za dva týždne. Konkurencia čaká mesiace.
+              </p>
+            </div>
           </div>
 
-          {/* Row 2: 3 equal */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {features.slice(2).map((f, i) => (
-              <div
-                key={i}
-                className="rounded-xl border border-black/[0.05] bg-background p-6 lg:p-8 flex flex-col gap-3 transition-shadow duration-500 hover:shadow-md"
-                style={{ transitionDelay: grid.isVisible ? `${(i + 2) * 0.1 + 0.1}s` : "0s" }}
-              >
-                <f.icon className="w-7 h-7 text-primary" strokeWidth={1.5} />
-                <h3 className="text-lg font-bold text-foreground leading-tight">{f.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
-              </div>
-            ))}
+          {/* Tile 2 — Compact icon tile: Online konfigurátor */}
+          <div
+            className="col-span-1 rounded-3xl bg-mollvero-blue-light/20 border border-border p-6 lg:p-8 flex flex-col justify-between group hover:shadow-lg transition-shadow duration-500"
+            style={{ transitionDelay: grid.isVisible ? "0.2s" : "0s" }}
+          >
+            <Monitor className="w-9 h-9 text-mollvero-blue-brand" strokeWidth={1.4} />
+            <div className="mt-auto">
+              <p className="text-lg font-bold text-foreground mb-1">Online konfigurátor</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Jednoducho a intuitívne — priamo v prehliadači.
+              </p>
+            </div>
+          </div>
+
+          {/* Tile 3 — Compact icon tile: Kvalita z masívu */}
+          <div
+            className="col-span-1 rounded-3xl bg-mollvero-green-light/30 border border-border p-6 lg:p-8 flex flex-col justify-between group hover:shadow-lg transition-shadow duration-500"
+            style={{ transitionDelay: grid.isVisible ? "0.25s" : "0s" }}
+          >
+            <TreePine className="w-9 h-9 text-mollvero-green-dark" strokeWidth={1.4} />
+            <div className="mt-auto">
+              <p className="text-lg font-bold text-foreground mb-1">Kvalita z masívu</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Ekologický prístup, udržateľné materiály, minimálny odpad.
+              </p>
+            </div>
+          </div>
+
+          {/* Tile 4 — Wide tile: Dovoz a montáž (spans 1 col on mobile, 1 on desktop) */}
+          <div
+            className="col-span-1 rounded-3xl bg-mollvero-beige/40 border border-border p-6 lg:p-8 flex flex-col justify-between group hover:shadow-lg transition-shadow duration-500"
+            style={{ transitionDelay: grid.isVisible ? "0.3s" : "0s" }}
+          >
+            <Package className="w-9 h-9 text-foreground" strokeWidth={1.4} />
+            <div className="mt-auto">
+              <p className="text-lg font-bold text-foreground mb-1">Dovoz a montáž</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Bez stresu — dovezieme a montáž je hračka.
+              </p>
+            </div>
+          </div>
+
+          {/* Tile 5 — Statement tile: Slovenský výrobca */}
+          <div
+            className="col-span-1 rounded-3xl bg-mollvero-yellow/20 border border-border p-6 lg:p-8 flex flex-col justify-between group hover:shadow-lg transition-shadow duration-500"
+            style={{ transitionDelay: grid.isVisible ? "0.35s" : "0s" }}
+          >
+            <Factory className="w-9 h-9 text-foreground" strokeWidth={1.4} />
+            <div className="mt-auto">
+              <p className="text-lg font-bold text-foreground mb-1">Slovenský výrobca</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Žiadni prostredníci. Férové ceny, priama komunikácia.
+              </p>
+            </div>
           </div>
         </div>
       </div>
