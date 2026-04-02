@@ -97,14 +97,13 @@ const FeaturesSection = () => {
   const heading = useScrollReveal();
 
   return (
-    <section className="py-14 lg:py-20 bg-muted/20 relative overflow-hidden">
+    <section className="py-10 lg:py-14 bg-muted/20 relative overflow-hidden">
       <div className="container mx-auto px-6 lg:px-12 relative">
-        {/* Heading */}
         <div
           ref={heading.ref}
-          className={`text-center mb-10 lg:mb-14 transition-all duration-700 ${heading.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
+          className={`text-center mb-8 lg:mb-10 transition-all duration-700 ${heading.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
         >
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-4">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3">
             Prečo Mollvero
           </p>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground">
@@ -113,8 +112,7 @@ const FeaturesSection = () => {
           </h2>
         </div>
 
-        {/* Organic vertical flow */}
-        <div className="flex flex-col gap-8 lg:gap-12 max-w-4xl mx-auto">
+        <div className="flex flex-col gap-4 lg:gap-6 max-w-3xl mx-auto">
           {features.map((feature, index) => (
             <FeatureRow key={index} feature={feature} index={index} />
           ))}
@@ -136,64 +134,41 @@ const FeatureRow = ({ feature, index }: FeatureRowProps) => {
   return (
     <div
       ref={row.ref}
-      className={`relative flex flex-col md:flex-row items-center gap-4 md:gap-8 transition-all duration-700 ease-out ${
-        row.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
+      className={`relative flex items-center gap-3 md:gap-5 transition-all duration-700 ease-out ${
+        row.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
-      style={{ transitionDelay: row.isVisible ? `${index * 0.08}s` : "0s" }}
+      style={{ transitionDelay: row.isVisible ? `${index * 0.06}s` : "0s" }}
     >
       {/* Brand SVG shape — layered behind */}
       <svg
-        className={`absolute ${feature.shapePos} ${feature.shapeSize} opacity-[0.25] pointer-events-none transition-all duration-1000 ${
-          row.isVisible ? "scale-100 opacity-[0.25]" : "scale-75 opacity-0"
+        className={`absolute ${feature.shapePos} opacity-[0.2] pointer-events-none transition-all duration-1000 ${
+          row.isVisible ? "scale-100 opacity-[0.2]" : "scale-75 opacity-0"
         }`}
+        style={{
+          transitionDelay: row.isVisible ? `${index * 0.06 + 0.15}s` : "0s",
+          width: "clamp(80px, 12vw, 130px)",
+          height: "auto",
+        }}
         viewBox={feature.viewBox}
         fill="none"
-        style={{ transitionDelay: row.isVisible ? `${index * 0.08 + 0.2}s` : "0s" }}
       >
         <path d={feature.path} fill={`hsl(var(${feature.fillVar}))`} />
       </svg>
 
-      {/* Content: text side */}
+      {/* Content */}
       <div
         className={`relative z-10 flex-1 ${
-          isLeft
-            ? "md:text-left md:pr-8"
-            : "md:text-right md:pl-8 md:order-2"
+          isLeft ? "md:text-left md:pl-2" : "md:text-right md:pr-2 md:ml-auto"
         }`}
+        style={{ maxWidth: "480px", marginLeft: isLeft ? undefined : "auto", marginRight: isLeft ? "auto" : undefined }}
       >
-        <div
-          className={`inline-flex items-center gap-3 mb-4 ${
-            !isLeft ? "md:flex-row-reverse" : ""
-          }`}
-        >
-          <div className="w-10 h-10 rounded-xl bg-foreground/5 flex items-center justify-center">
-            <feature.icon className="w-5 h-5 text-foreground" strokeWidth={1.4} />
-          </div>
-        </div>
-
-        <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-1 leading-tight">
+        <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-foreground leading-tight">
           {feature.title}{" "}
           <span className="font-script font-normal text-primary">{feature.highlight}</span>
         </h3>
-
-        <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-sm">
+        <p className="text-xs md:text-sm text-muted-foreground leading-relaxed mt-0.5">
           {feature.description}
         </p>
-      </div>
-
-      {/* Visual side: smaller decorative accent shape */}
-      <div
-        className={`relative flex-shrink-0 w-16 h-16 md:w-20 md:h-20 ${
-          isLeft ? "md:order-2" : "md:order-1"
-        }`}
-      >
-        <svg
-          className="w-full h-full opacity-40"
-          viewBox={feature.viewBox}
-          fill="none"
-        >
-          <path d={feature.path} fill={`hsl(var(${feature.fillVar}))`} />
-        </svg>
       </div>
     </div>
   );
