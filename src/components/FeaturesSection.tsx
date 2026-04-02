@@ -97,7 +97,7 @@ const FeaturesSection = () => {
   const heading = useScrollReveal();
 
   return (
-    <section className="py-28 lg:py-44 bg-muted/20 relative overflow-hidden">
+    <section className="py-14 lg:py-20 bg-muted/20 relative overflow-hidden">
       <div className="container mx-auto px-6 lg:px-12 relative">
         {/* Heading */}
         <div
