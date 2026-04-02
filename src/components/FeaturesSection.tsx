@@ -75,8 +75,8 @@ const features = [
     viewBox: "0 0 238.62 325.92",
     path: "M182.6,325.92c-6.67,0-13.41-1.19-19.98-3.68L10.63,265.3c-8.47-3.17-12.75-12.6-9.58-21.07C1.04,244.23,112.52,4.38,120.97,1.11c8.44-3.27,17.9.91,21.2,9.36l92.57,238.9c8.11,20.92,3.35,43.84-12.45,59.79-10.85,10.95-25.02,16.76-39.65,16.76h-.02Z",
     fillVar: "--mollvero-beige",
-    shapeSize: "w-[200px] h-[280px] md:w-[260px] md:h-[350px]",
-    shapePos: "left-0 md:left-[5%] top-1/2 -translate-y-1/2",
+    shapeSize: "w-[120px] h-[170px] md:w-[160px] md:h-[210px]",
+    shapePos: "left-4 md:left-[10%] top-1/2 -translate-y-1/2",
   },
   {
     icon: Factory,
