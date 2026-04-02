@@ -88,8 +88,8 @@ const features = [
     viewBox: "0 0 286.64 325.92",
     path: "M62.44,325.92c-14.85,0-29.49-5.48-41.48-16.16C.06,291.08-5.8,262.63,6.05,237.29L111.86,11.05c4.49-9.56,15.92-13.71,25.53-9.27l146.77,181.11c5.48,9.06,1.4,19.26-7.68,24.74l-181.52,109.06c-10.27,6.16-21.46,9.21-32.53,9.21v.03Z",
     fillVar: "--mollvero-purple",
-    shapeSize: "w-[240px] h-[270px] md:w-[320px] md:h-[360px]",
-    shapePos: "right-0 md:right-[3%] top-1/2 -translate-y-1/2",
+    shapeSize: "w-[140px] h-[160px] md:w-[190px] md:h-[210px]",
+    shapePos: "right-4 md:right-[8%] top-1/2 -translate-y-1/2",
   },
 ];
 
