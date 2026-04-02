@@ -183,7 +183,7 @@ const FeatureRow = ({ feature, index }: FeatureRowProps) => {
 
       {/* Visual side: smaller decorative accent shape */}
       <div
-        className={`relative flex-shrink-0 w-24 h-24 md:w-32 md:h-32 ${
+        className={`relative flex-shrink-0 w-16 h-16 md:w-20 md:h-20 ${
           isLeft ? "md:order-2" : "md:order-1"
         }`}
       >
