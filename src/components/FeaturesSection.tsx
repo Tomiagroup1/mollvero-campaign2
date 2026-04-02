@@ -102,7 +102,7 @@ const FeaturesSection = () => {
         {/* Heading */}
         <div
           ref={heading.ref}
-          className={`text-center mb-24 lg:mb-32 transition-all duration-700 ${heading.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
+          className={`text-center mb-10 lg:mb-14 transition-all duration-700 ${heading.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
         >
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-4">
             Prečo Mollvero
