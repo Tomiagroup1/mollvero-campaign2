@@ -56,7 +56,7 @@ const FeaturesSection = () => {
         {/* Bento Grid */}
         <div
           ref={grid.ref}
-          className={`grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-5 auto-rows-[minmax(180px,auto)] transition-all duration-700 ${grid.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"}`}
+          className={`grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-5 auto-rows-[minmax(140px,auto)] transition-all duration-700 ${grid.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"}`}
         >
           {/* Tile 1 — Large hero tile: 14 dní (spans 2 cols, 2 rows) */}
           <div
