@@ -4,19 +4,23 @@ import { Clock, Users, Leaf, Star } from "lucide-react";
 const points = [
   {
     icon: Clock,
-    text: "Roky skúseností s výrobou nábytku na mieru (pôvodný B2B brand Lukamasiv)",
+    title: "Roky skúseností",
+    desc: "Dlhoročné skúsenosti s výrobou nábytku na mieru (pôvodný B2B brand Lukamasiv).",
   },
   {
     icon: Users,
-    text: "Slovenský výrobca – žiadni prostredníci, priama komunikácia",
+    title: "Priama komunikácia",
+    desc: "Slovenský výrobca – žiadni prostredníci, férové ceny.",
   },
   {
     icon: Leaf,
-    text: "Ekologický prístup a udržateľné materiály",
+    title: "Ekologický prístup",
+    desc: "Udržateľné materiály a minimálny odpad pri výrobe.",
   },
   {
     icon: Star,
-    text: "Reálne recenzie a referencie od spokojných zákazníkov",
+    title: "Overené recenzie",
+    desc: "Reálne referencie od spokojných zákazníkov po celom Slovensku.",
   },
 ];
 
@@ -41,10 +45,10 @@ const TrustSection = () => {
   }, []);
 
   return (
-    <section className="py-24 lg:py-32 bg-background relative overflow-hidden">
-      <div className="container mx-auto px-6 lg:px-12 relative" ref={ref}>
+    <section className="py-20 lg:py-28 bg-background">
+      <div className="container mx-auto px-6 lg:px-12" ref={ref}>
         <div
-          className={`text-center mb-16 transition-all duration-700 ${
+          className={`text-center mb-14 lg:mb-16 transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
@@ -54,21 +58,20 @@ const TrustSection = () => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {points.map((point, index) => (
             <div
               key={index}
-              className={`flex items-start gap-4 p-6 rounded-2xl border border-border bg-muted/30 transition-all duration-700 ${
+              className={`rounded-xl border border-black/[0.05] bg-muted/30 p-6 lg:p-8 flex flex-col gap-3 transition-all duration-700 hover:shadow-md ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
               }`}
               style={{
-                transitionDelay: isVisible ? `${index * 0.12 + 0.3}s` : "0s",
+                transitionDelay: isVisible ? `${index * 0.1 + 0.2}s` : "0s",
               }}
             >
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                <point.icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
-              </div>
-              <p className="text-foreground leading-relaxed">{point.text}</p>
+              <point.icon className="w-7 h-7 text-primary" strokeWidth={1.5} />
+              <h3 className="text-lg font-bold text-foreground leading-tight">{point.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{point.desc}</p>
             </div>
           ))}
         </div>
