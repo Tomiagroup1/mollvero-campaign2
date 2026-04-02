@@ -60,7 +60,7 @@ const FeaturesSection = () => {
         >
           {/* Tile 1 — Large hero tile: 14 dní (spans 2 cols, 2 rows) */}
           <div
-            className="col-span-2 row-span-2 rounded-3xl bg-mollvero-coral/10 border border-border p-8 lg:p-10 flex flex-col justify-between group hover:shadow-lg transition-shadow duration-500"
+            className="col-span-2 row-span-2 rounded-3xl bg-mollvero-coral/10 border border-border p-6 lg:p-8 flex flex-col justify-between group hover:shadow-lg transition-shadow duration-500"
             style={{ transitionDelay: grid.isVisible ? "0.1s" : "0s" }}
           >
             <Truck className="w-10 h-10 text-mollvero-coral mb-4" strokeWidth={1.4} />
