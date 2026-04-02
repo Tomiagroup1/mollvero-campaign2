@@ -56,19 +56,19 @@ const FeaturesSection = () => {
         {/* Bento Grid */}
         <div
           ref={grid.ref}
-          className={`grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-5 auto-rows-[minmax(180px,auto)] transition-all duration-700 ${grid.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"}`}
+          className={`grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-5 auto-rows-[minmax(140px,auto)] transition-all duration-700 ${grid.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"}`}
         >
           {/* Tile 1 — Large hero tile: 14 dní (spans 2 cols, 2 rows) */}
           <div
-            className="col-span-2 row-span-2 rounded-3xl bg-mollvero-coral/10 border border-border p-8 lg:p-10 flex flex-col justify-between group hover:shadow-lg transition-shadow duration-500"
+            className="col-span-2 row-span-2 rounded-3xl bg-mollvero-coral/10 border border-border p-6 lg:p-8 flex flex-col justify-between group hover:shadow-lg transition-shadow duration-500"
             style={{ transitionDelay: grid.isVisible ? "0.1s" : "0s" }}
           >
-            <Truck className="w-10 h-10 text-mollvero-coral mb-4" strokeWidth={1.4} />
+            <Truck className="w-8 h-8 text-mollvero-coral mb-3" strokeWidth={1.4} />
             <div>
-              <p className="text-6xl lg:text-8xl font-bold text-foreground leading-none mb-3">
-                14 <span className="text-primary font-script font-normal text-5xl lg:text-7xl">dní</span>
+              <p className="text-4xl lg:text-6xl font-bold text-foreground leading-none mb-2">
+                14 <span className="text-primary font-script font-normal text-3xl lg:text-5xl">dní</span>
               </p>
-              <p className="text-lg lg:text-xl font-semibold text-foreground mb-1">Dodanie do 14 dní</p>
+              <p className="text-base lg:text-lg font-semibold text-foreground mb-1">Dodanie do 14 dní</p>
               <p className="text-muted-foreground leading-relaxed">
                 Váš nábytok na mieru u vás doma za dva týždne. Konkurencia čaká mesiace.
               </p>
