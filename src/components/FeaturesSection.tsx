@@ -171,7 +171,7 @@ const FeatureRow = ({ feature, index }: FeatureRowProps) => {
           </div>
         </div>
 
-        <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-2 leading-tight">
+        <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-1 leading-tight">
           {feature.title}{" "}
           <span className="font-script font-normal text-primary">{feature.highlight}</span>
         </h3>
