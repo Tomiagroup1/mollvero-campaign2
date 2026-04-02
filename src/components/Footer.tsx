@@ -10,7 +10,7 @@ const Footer = () => {
           </a>
           <div className="flex items-center gap-6 text-primary-foreground/50 text-sm">
             <a href="https://mollvero.sk/" target="_blank" rel="noopener noreferrer" className="hover:text-primary-foreground transition-colors">
-              E-shop mollvero.sk
+              mollvero.sk
             </a>
             <a href="mailto:obchod@mollvero.sk" className="hover:text-primary-foreground transition-colors">
               obchod@mollvero.sk
