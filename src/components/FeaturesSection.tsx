@@ -166,8 +166,8 @@ const FeatureRow = ({ feature, index }: FeatureRowProps) => {
             !isLeft ? "md:flex-row-reverse" : ""
           }`}
         >
-          <div className="w-12 h-12 rounded-2xl bg-foreground/5 flex items-center justify-center">
-            <feature.icon className="w-6 h-6 text-foreground" strokeWidth={1.4} />
+          <div className="w-10 h-10 rounded-xl bg-foreground/5 flex items-center justify-center">
+            <feature.icon className="w-5 h-5 text-foreground" strokeWidth={1.4} />
           </div>
         </div>
 
