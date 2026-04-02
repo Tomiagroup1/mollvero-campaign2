@@ -2,6 +2,8 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import TrustBar from "@/components/TrustBar";
 import FeaturesSection from "@/components/FeaturesSection";
+import TrustSection from "@/components/TrustSection";
+import FaqSection from "@/components/FaqSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -11,6 +13,8 @@ const Index = () => {
       <HeroSection />
       <TrustBar />
       <FeaturesSection />
+      <TrustSection />
+      <FaqSection />
       <Footer />
     </div>
   );
