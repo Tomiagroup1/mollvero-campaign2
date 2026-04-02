@@ -114,7 +114,7 @@ const FeaturesSection = () => {
         </div>
 
         {/* Organic vertical flow */}
-        <div className="flex flex-col gap-24 lg:gap-36 max-w-5xl mx-auto">
+        <div className="flex flex-col gap-8 lg:gap-12 max-w-4xl mx-auto">
           {features.map((feature, index) => (
             <FeatureRow key={index} feature={feature} index={index} />
           ))}
