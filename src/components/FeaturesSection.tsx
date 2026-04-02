@@ -56,77 +56,75 @@ const FeaturesSection = () => {
         {/* Bento Grid */}
         <div
           ref={grid.ref}
-          className={`grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-5 auto-rows-[minmax(180px,auto)] transition-all duration-700 ${grid.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"}`}
+          className={`grid grid-cols-2 md:grid-cols-5 gap-3.5 lg:gap-4 auto-rows-[minmax(150px,auto)] transition-all duration-700 ${grid.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"}`}
         >
-          {/* Tile 1 — Large hero tile: 14 dní (spans 2 cols, 2 rows) */}
+          {/* Tile 1 — Primary tile: 14 dní (spans 3 of 5 cols, 2 rows) */}
           <div
-            className="col-span-2 row-span-2 rounded-3xl bg-mollvero-coral/10 border border-border p-8 lg:p-10 flex flex-col justify-between group hover:shadow-lg transition-shadow duration-500"
+            className="col-span-2 md:col-span-3 row-span-2 rounded-2xl bg-mollvero-coral/10 border border-black/[0.06] p-6 lg:p-8 flex flex-col items-center justify-center text-center group hover:shadow-lg transition-shadow duration-500"
             style={{ transitionDelay: grid.isVisible ? "0.1s" : "0s" }}
           >
-            <Truck className="w-10 h-10 text-mollvero-coral mb-4" strokeWidth={1.4} />
-            <div>
-              <p className="text-6xl lg:text-8xl font-bold text-foreground leading-none mb-3">
-                14 <span className="text-primary font-script font-normal text-5xl lg:text-7xl">dní</span>
-              </p>
-              <p className="text-lg lg:text-xl font-semibold text-foreground mb-1">Dodanie do 14 dní</p>
-              <p className="text-muted-foreground leading-relaxed">
-                Váš nábytok na mieru u vás doma za dva týždne. Konkurencia čaká mesiace.
-              </p>
-            </div>
+            <Truck className="w-9 h-9 text-mollvero-coral mb-3" strokeWidth={1.4} />
+            <p className="text-4xl lg:text-5xl font-bold text-foreground leading-none mb-1">
+              14 <span className="text-primary font-script font-normal text-3xl lg:text-4xl">dní</span>
+            </p>
+            <p className="text-base lg:text-lg font-semibold text-foreground mb-1">Dodanie do 14 dní</p>
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
+              Váš nábytok na mieru u vás doma za dva týždne. Konkurencia čaká mesiace.
+            </p>
           </div>
 
-          {/* Tile 2 — Compact icon tile: Online konfigurátor */}
+          {/* Tile 2 — Online konfigurátor */}
           <div
-            className="col-span-1 rounded-3xl bg-mollvero-blue-light/20 border border-border p-6 lg:p-8 flex flex-col justify-between group hover:shadow-lg transition-shadow duration-500"
+            className="col-span-1 md:col-span-2 rounded-2xl bg-mollvero-blue-light/20 border border-black/[0.06] p-6 flex flex-col justify-between group hover:shadow-lg transition-shadow duration-500"
             style={{ transitionDelay: grid.isVisible ? "0.2s" : "0s" }}
           >
-            <Monitor className="w-9 h-9 text-mollvero-blue-brand" strokeWidth={1.4} />
-            <div className="mt-auto">
-              <p className="text-lg font-bold text-foreground mb-1">Online konfigurátor</p>
+            <Monitor className="w-8 h-8 text-mollvero-blue-brand mb-auto" strokeWidth={1.4} />
+            <div>
+              <p className="text-base font-bold text-foreground mb-0.5">Online konfigurátor</p>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Jednoducho a intuitívne — priamo v prehliadači.
               </p>
             </div>
           </div>
 
-          {/* Tile 3 — Compact icon tile: Kvalita z masívu */}
+          {/* Tile 3 — Kvalita z masívu */}
           <div
-            className="col-span-1 rounded-3xl bg-mollvero-green-light/30 border border-border p-6 lg:p-8 flex flex-col justify-between group hover:shadow-lg transition-shadow duration-500"
+            className="col-span-1 md:col-span-2 rounded-2xl bg-mollvero-green-light/30 border border-black/[0.06] p-6 flex flex-col justify-between group hover:shadow-lg transition-shadow duration-500"
             style={{ transitionDelay: grid.isVisible ? "0.25s" : "0s" }}
           >
-            <TreePine className="w-9 h-9 text-mollvero-green-dark" strokeWidth={1.4} />
-            <div className="mt-auto">
-              <p className="text-lg font-bold text-foreground mb-1">Kvalita z masívu</p>
+            <TreePine className="w-8 h-8 text-mollvero-green-dark mb-auto" strokeWidth={1.4} />
+            <div>
+              <p className="text-base font-bold text-foreground mb-0.5">Kvalita z masívu</p>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Ekologický prístup, udržateľné materiály, minimálny odpad.
               </p>
             </div>
           </div>
 
-          {/* Tile 4 — Wide tile: Dovoz a montáž (spans 1 col on mobile, 1 on desktop) */}
+          {/* Tile 4 — Dovoz a montáž */}
           <div
-            className="col-span-1 rounded-3xl bg-mollvero-beige/40 border border-border p-6 lg:p-8 flex flex-col justify-between group hover:shadow-lg transition-shadow duration-500"
+            className="col-span-1 md:col-span-2 rounded-2xl bg-mollvero-beige/40 border border-black/[0.06] p-6 flex flex-col justify-between group hover:shadow-lg transition-shadow duration-500"
             style={{ transitionDelay: grid.isVisible ? "0.3s" : "0s" }}
           >
-            <Package className="w-9 h-9 text-foreground" strokeWidth={1.4} />
-            <div className="mt-auto">
-              <p className="text-lg font-bold text-foreground mb-1">Dovoz a montáž</p>
+            <Package className="w-8 h-8 text-foreground mb-auto" strokeWidth={1.4} />
+            <div>
+              <p className="text-base font-bold text-foreground mb-0.5">Dovoz a montáž</p>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Bez stresu — dovezieme a montáž je hračka.
               </p>
             </div>
           </div>
 
-          {/* Tile 5 — Statement tile: Slovenský výrobca */}
+          {/* Tile 5 — Slovenský výrobca */}
           <div
-            className="col-span-1 rounded-3xl bg-mollvero-yellow/20 border border-border p-6 lg:p-8 flex flex-col justify-between group hover:shadow-lg transition-shadow duration-500"
+            className="col-span-1 md:col-span-1 rounded-2xl bg-mollvero-yellow/20 border border-black/[0.06] p-6 flex flex-col justify-between group hover:shadow-lg transition-shadow duration-500"
             style={{ transitionDelay: grid.isVisible ? "0.35s" : "0s" }}
           >
-            <Factory className="w-9 h-9 text-foreground" strokeWidth={1.4} />
-            <div className="mt-auto">
-              <p className="text-lg font-bold text-foreground mb-1">Slovenský výrobca</p>
+            <Factory className="w-8 h-8 text-foreground mb-auto" strokeWidth={1.4} />
+            <div>
+              <p className="text-base font-bold text-foreground mb-0.5">Slovenský výrobca</p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Žiadni prostredníci. Férové ceny, priama komunikácia.
+                Žiadni prostredníci. Férové ceny.
               </p>
             </div>
           </div>
