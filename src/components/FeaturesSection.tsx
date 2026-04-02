@@ -97,11 +97,11 @@ const FeaturesSection = () => {
   const heading = useScrollReveal();
 
   return (
-    <section className="py-10 lg:py-14 bg-muted/20 relative overflow-hidden">
+    <section className="py-24 lg:py-32 bg-muted/20 relative overflow-hidden">
       <div className="container mx-auto px-6 lg:px-12 relative">
         <div
           ref={heading.ref}
-          className={`text-center mb-8 lg:mb-10 transition-all duration-700 ${heading.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
+          className={`text-center mb-14 lg:mb-20 transition-all duration-700 ${heading.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
         >
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3">
             Prečo Mollvero
