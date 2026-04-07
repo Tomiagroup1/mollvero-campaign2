@@ -25,29 +25,30 @@ const HeroSection = () => {
         <path d="M50.34,446.69c-7.85,0-14.93-5.46-16.61-13.44L3.26,289.92c-10.66-50.12,5.16-101.24,42.29-136.69L201.13,4.7c6.79-6.48,17.53-6.22,24.04.53,6.5,6.77,6.27,17.5-.53,23.96L69.06,177.71c-28.57,27.29-40.73,66.6-32.54,105.18l30.46,143.33c1.95,9.16-3.92,18.16-13.11,20.1-1.19.26-2.37.37-3.55.37h.03Z" fill="hsl(var(--mollvero-yellow))" />
       </svg>
 
-      <div className="max-w-7xl mx-auto px-6 pr-10 sm:pr-12 lg:px-12 lg:pr-16 relative overflow-visible">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative overflow-visible">
         <div className="flex flex-col lg:flex-row items-center min-h-[calc(100vh-4rem)] gap-0 overflow-visible">
 
           {/* Left — text content */}
-          <div className="relative z-10 lg:w-[55%] space-y-8 py-12 lg:py-0 lg:pr-16 overflow-visible">
+          <div className="relative z-10 lg:w-[50%] space-y-8 py-12 lg:py-0 lg:pr-12 overflow-visible">
             {/* 30% discount graphic */}
             <div className="opacity-0 animate-count-up overflow-visible">
-              <div className="flex items-end gap-3 overflow-visible origin-left scale-[0.8] sm:scale-[0.88] md:scale-100">
+              <div className="flex items-end gap-2 overflow-visible origin-left scale-[0.75] sm:scale-[0.82] md:scale-[0.9] lg:scale-100">
                 <span
-                  className="inline-block pr-[0.08em] text-[6.5rem] md:text-[9.5rem] lg:text-[11rem] xl:text-[12rem] font-bold leading-none tracking-[-0.06em] animate-shimmer"
+                  className="inline-block text-[6rem] md:text-[8.5rem] lg:text-[10rem] xl:text-[11rem] font-bold leading-none tracking-[-0.04em] animate-shimmer"
                   style={{
                     background: "linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--mollvero-coral)) 25%, hsl(var(--primary-foreground)) 50%, hsl(var(--mollvero-coral)) 75%, hsl(var(--primary)) 100%)",
                     backgroundSize: "200% 100%",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
+                    paddingRight: "0.05em",
                   }}
                 >
                   30
                 </span>
-                <div className="pb-3 md:pb-5">
+                <div className="pb-2 md:pb-4">
                   <span
-                    className="text-4xl md:text-6xl font-bold animate-shimmer"
+                    className="text-3xl md:text-5xl font-bold animate-shimmer"
                     style={{
                       background: "linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--mollvero-coral)) 50%, hsl(var(--primary)) 100%)",
                       backgroundSize: "200% 100%",
@@ -59,7 +60,7 @@ const HeroSection = () => {
                   <p className="text-base md:text-lg font-semibold text-foreground mt-1">zľava</p>
                 </div>
               </div>
-              <p className="text-sm font-medium text-muted-foreground tracking-widest uppercase mt-2">
+              <p className="text-sm font-medium text-muted-foreground tracking-widest uppercase mt-3">
                 na prvú objednávku · limitovaná akcia
               </p>
             </div>
@@ -87,7 +88,7 @@ const HeroSection = () => {
                 href={CTA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-2xl bg-mollvero-coral text-white font-semibold text-base transition-all duration-300 hover:scale-[1.04] hover:shadow-2xl hover:shadow-mollvero-coral/30 hover:brightness-110"
+                className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-full bg-mollvero-coral text-white font-semibold text-base transition-all duration-300 hover:scale-[1.04] hover:shadow-2xl hover:shadow-mollvero-coral/30 hover:brightness-110"
               >
                 Chcem zľavu 30% →
               </a>
