@@ -5,7 +5,7 @@ const CTA_URL =
 
 const HeroSection = () => {
   return (
-    <section className="min-h-screen pt-16 relative bg-gradient-to-br from-background via-muted/30 to-mollvero-beige/20">
+    <section className="min-h-screen pt-16 relative bg-gradient-to-br from-background via-muted/30 to-mollvero-beige/20 overflow-x-clip">
       {/* Subtle warm radial glow */}
       <div className="absolute top-[20%] left-[15%] w-[500px] h-[500px] bg-primary/[0.04] rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[10%] right-[30%] w-[400px] h-[400px] bg-mollvero-yellow/[0.06] rounded-full blur-[100px] pointer-events-none" />
@@ -31,10 +31,10 @@ const HeroSection = () => {
           {/* Left — text content */}
           <div className="relative z-10 lg:w-[55%] space-y-8 py-12 lg:py-0 lg:pr-8">
             {/* 30% discount graphic */}
-            <div className="opacity-0 animate-count-up">
-              <div className="flex items-end gap-2">
+            <div className="opacity-0 animate-count-up overflow-visible">
+              <div className="flex items-end gap-3 overflow-visible">
                 <span
-                  className="text-[8rem] md:text-[11rem] lg:text-[13rem] font-bold leading-none tracking-tighter animate-shimmer"
+                  className="text-[7rem] md:text-[10rem] lg:text-[12rem] font-bold leading-none tracking-tighter animate-shimmer"
                   style={{
                     background: "linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--mollvero-coral)) 25%, hsl(var(--primary-foreground)) 50%, hsl(var(--mollvero-coral)) 75%, hsl(var(--primary)) 100%)",
                     backgroundSize: "200% 100%",
@@ -45,7 +45,7 @@ const HeroSection = () => {
                 >
                   30
                 </span>
-                <div className="pb-4 md:pb-6">
+                <div className="pb-3 md:pb-5">
                   <span
                     className="text-4xl md:text-6xl font-bold animate-shimmer"
                     style={{
@@ -89,7 +89,7 @@ const HeroSection = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-2xl bg-mollvero-coral text-white font-semibold text-base transition-all duration-300 hover:scale-[1.04] hover:shadow-2xl hover:shadow-mollvero-coral/30 hover:brightness-110"
               >
-                Chcem zľavu 30 %
+                Chcem zľavu 30% →
               </a>
             </div>
           </div>
