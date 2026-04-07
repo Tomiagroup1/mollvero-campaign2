@@ -25,7 +25,7 @@ const HeroSection = () => {
         <path d="M50.34,446.69c-7.85,0-14.93-5.46-16.61-13.44L3.26,289.92c-10.66-50.12,5.16-101.24,42.29-136.69L201.13,4.7c6.79-6.48,17.53-6.22,24.04.53,6.5,6.77,6.27,17.5-.53,23.96L69.06,177.71c-28.57,27.29-40.73,66.6-32.54,105.18l30.46,143.33c1.95,9.16-3.92,18.16-13.11,20.1-1.19.26-2.37.37-3.55.37h.03Z" fill="hsl(var(--mollvero-yellow))" />
       </svg>
 
-      <div className="container mx-auto px-6 lg:px-12 relative">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
         <div className="flex flex-col lg:flex-row items-center min-h-[calc(100vh-4rem)] gap-0">
 
           {/* Left — text content */}
