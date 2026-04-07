@@ -5,7 +5,7 @@ const CTA_URL =
 
 const HeroSection = () => {
   return (
-    <section className="min-h-screen pt-16 relative overflow-hidden bg-gradient-to-br from-background via-muted/30 to-mollvero-beige/20">
+    <section className="min-h-screen pt-16 relative bg-gradient-to-br from-background via-muted/30 to-mollvero-beige/20">
       {/* Subtle warm radial glow */}
       <div className="absolute top-[20%] left-[15%] w-[500px] h-[500px] bg-primary/[0.04] rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[10%] right-[30%] w-[400px] h-[400px] bg-mollvero-yellow/[0.06] rounded-full blur-[100px] pointer-events-none" />
@@ -76,8 +76,8 @@ const HeroSection = () => {
               </h1>
               <p className="text-muted-foreground text-base md:text-lg max-w-lg leading-relaxed">
                 Nakonfigurujte si skrine, kuchyne či obývačky presne podľa vašich predstáv
-                – priamo z pohodlia domova. Ako prví získate prístup do nášho konfigurátora
-                a 30% zľavu na prvú objednávku.
+                priamo z pohodlia domova. Ako prví získate prístup do nášho konfigurátora
+                a 30&nbsp;% zľavu na prvú objednávku.
               </p>
             </div>
 
@@ -87,9 +87,9 @@ const HeroSection = () => {
                 href={CTA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-base transition-all duration-300 hover:scale-[1.08] hover:shadow-2xl hover:shadow-primary/30 hover:brightness-110"
+                className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-2xl bg-mollvero-coral text-white font-semibold text-base transition-all duration-300 hover:scale-[1.04] hover:shadow-2xl hover:shadow-mollvero-coral/30 hover:brightness-110"
               >
-                Chcem zľavu 30% →
+                Chcem nábytok na mieru
               </a>
             </div>
           </div>
