@@ -29,10 +29,10 @@ const HeroSection = () => {
         <div className="flex flex-col lg:flex-row items-center min-h-[calc(100vh-4rem)] gap-0 overflow-visible">
 
           {/* Left — text content */}
-          <div className="relative z-10 lg:w-[50%] space-y-8 py-12 lg:py-0 lg:pr-12 overflow-visible">
-            {/* 30% discount graphic */}
+          <div className="relative z-10 lg:w-[50%] flex flex-col gap-6 py-12 lg:py-0 lg:pr-12 overflow-visible">
+            {/* 30% discount graphic — unified block */}
             <div className="opacity-0 animate-count-up overflow-visible">
-              <div className="flex items-end gap-2 overflow-visible origin-left scale-[0.75] sm:scale-[0.82] md:scale-[0.9] lg:scale-100">
+              <div className="flex items-end gap-2 overflow-visible origin-left scale-[0.65] sm:scale-[0.75] md:scale-[0.85] lg:scale-[0.95]">
                 <span
                   className="inline-block text-[6rem] md:text-[8.5rem] lg:text-[10rem] xl:text-[11rem] font-bold leading-none tracking-[-0.04em] animate-shimmer"
                   style={{
@@ -41,7 +41,7 @@ const HeroSection = () => {
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
-                    paddingRight: "0.05em",
+                    paddingRight: "0.15em",
                   }}
                 >
                   30
@@ -60,13 +60,13 @@ const HeroSection = () => {
                   <p className="text-base md:text-lg font-semibold text-foreground mt-1">zľava</p>
                 </div>
               </div>
-              <p className="text-sm font-medium text-muted-foreground tracking-widest uppercase mt-3">
+              <p className="text-sm font-medium text-muted-foreground tracking-widest uppercase mt-1">
                 na prvú objednávku · limitovaná akcia
               </p>
             </div>
 
             {/* Headline */}
-            <div className="space-y-4 opacity-0 animate-slide-in-left" style={{ animationDelay: "0.4s" }}>
+            <div className="space-y-3 opacity-0 animate-slide-in-left" style={{ animationDelay: "0.4s" }}>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-[1.1]">
                 Nábytok na mieru.
                 <br />
