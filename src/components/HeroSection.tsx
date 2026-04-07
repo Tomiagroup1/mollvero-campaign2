@@ -5,7 +5,7 @@ const CTA_URL =
 
 const HeroSection = () => {
   return (
-    <section className="min-h-screen pt-16 relative bg-gradient-to-br from-background via-muted/30 to-mollvero-beige/20 overflow-x-clip">
+    <section className="min-h-screen pt-16 relative bg-gradient-to-br from-background via-muted/30 to-mollvero-beige/20 overflow-visible">
       {/* Subtle warm radial glow */}
       <div className="absolute top-[20%] left-[15%] w-[500px] h-[500px] bg-primary/[0.04] rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[10%] right-[30%] w-[400px] h-[400px] bg-mollvero-yellow/[0.06] rounded-full blur-[100px] pointer-events-none" />
@@ -25,16 +25,16 @@ const HeroSection = () => {
         <path d="M50.34,446.69c-7.85,0-14.93-5.46-16.61-13.44L3.26,289.92c-10.66-50.12,5.16-101.24,42.29-136.69L201.13,4.7c6.79-6.48,17.53-6.22,24.04.53,6.5,6.77,6.27,17.5-.53,23.96L69.06,177.71c-28.57,27.29-40.73,66.6-32.54,105.18l30.46,143.33c1.95,9.16-3.92,18.16-13.11,20.1-1.19.26-2.37.37-3.55.37h.03Z" fill="hsl(var(--mollvero-yellow))" />
       </svg>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
-        <div className="flex flex-col lg:flex-row items-center min-h-[calc(100vh-4rem)] gap-0">
+      <div className="max-w-7xl mx-auto px-6 pr-10 sm:pr-12 lg:px-12 lg:pr-16 relative overflow-visible">
+        <div className="flex flex-col lg:flex-row items-center min-h-[calc(100vh-4rem)] gap-0 overflow-visible">
 
           {/* Left — text content */}
-          <div className="relative z-10 lg:w-[55%] space-y-8 py-12 lg:py-0 lg:pr-8">
+          <div className="relative z-10 lg:w-[55%] space-y-8 py-12 lg:py-0 lg:pr-16 overflow-visible">
             {/* 30% discount graphic */}
-            <div className="opacity-0 animate-count-up overflow-visible">
-              <div className="flex items-end gap-3 overflow-visible">
+            <div className="opacity-0 animate-count-up overflow-visible flex justify-center lg:justify-start">
+              <div className="inline-flex items-end gap-3 overflow-visible origin-center lg:origin-left scale-[0.84] sm:scale-[0.92] md:scale-100">
                 <span
-                  className="text-[7rem] md:text-[10rem] lg:text-[12rem] font-bold leading-none tracking-tighter animate-shimmer"
+                  className="inline-block pr-[0.08em] text-[6.5rem] md:text-[9.5rem] lg:text-[11rem] xl:text-[12rem] font-bold leading-none tracking-[-0.06em] animate-shimmer"
                   style={{
                     background: "linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--mollvero-coral)) 25%, hsl(var(--primary-foreground)) 50%, hsl(var(--mollvero-coral)) 75%, hsl(var(--primary)) 100%)",
                     backgroundSize: "200% 100%",
