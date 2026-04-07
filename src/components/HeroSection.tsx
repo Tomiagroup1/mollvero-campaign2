@@ -31,8 +31,8 @@ const HeroSection = () => {
           {/* Left — text content */}
           <div className="relative z-10 lg:w-[55%] space-y-8 py-12 lg:py-0 lg:pr-16 overflow-visible">
             {/* 30% discount graphic */}
-            <div className="opacity-0 animate-count-up overflow-visible flex justify-center lg:justify-start">
-              <div className="inline-flex items-end gap-3 overflow-visible origin-center lg:origin-left scale-[0.84] sm:scale-[0.92] md:scale-100">
+            <div className="opacity-0 animate-count-up overflow-visible">
+              <div className="flex items-end gap-3 overflow-visible origin-left scale-[0.8] sm:scale-[0.88] md:scale-100">
                 <span
                   className="inline-block pr-[0.08em] text-[6.5rem] md:text-[9.5rem] lg:text-[11rem] xl:text-[12rem] font-bold leading-none tracking-[-0.06em] animate-shimmer"
                   style={{
@@ -59,7 +59,7 @@ const HeroSection = () => {
                   <p className="text-base md:text-lg font-semibold text-foreground mt-1">zľava</p>
                 </div>
               </div>
-              <p className="text-sm font-medium text-muted-foreground tracking-widest uppercase">
+              <p className="text-sm font-medium text-muted-foreground tracking-widest uppercase mt-2">
                 na prvú objednávku · limitovaná akcia
               </p>
             </div>
