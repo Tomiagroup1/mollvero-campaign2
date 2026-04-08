@@ -19,32 +19,34 @@ const CtaBanner = () => {
       <div className="absolute bottom-0 left-[40%] w-[300px] h-[300px] bg-white/[0.04] rounded-full translate-y-1/2" />
 
       <div className="container mx-auto px-6 lg:px-12 relative">
-        <div className="grid lg:grid-cols-2 gap-0 items-stretch min-h-[600px]">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch min-h-[600px] py-10">
           {/* Left — image + floating benefit pills */}
           <div className="relative hidden lg:block">
-            <img
-              src={heroImg}
-              alt="Nábytok na mieru od Mollvero"
-              className="absolute inset-0 w-full h-full object-cover"
-              loading="lazy"
-            />
-            {/* Dark overlay for contrast */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
+            <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl">
+              <img
+                src={heroImg}
+                alt="Nábytok na mieru od Mollvero"
+                className="absolute inset-0 w-full h-full object-cover"
+                loading="lazy"
+              />
+              {/* Dark overlay for contrast */}
+              <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
 
-            {/* Floating benefit pills */}
-            <div className="absolute inset-0 flex flex-col justify-end p-8 pb-12 gap-3">
-              {benefits.map((b, i) => (
-                <div
-                  key={i}
-                  className="inline-flex items-center gap-3 bg-white/90 backdrop-blur-sm rounded-full px-5 py-3 w-fit shadow-lg"
-                  style={{ animationDelay: `${i * 0.15}s` }}
-                >
-                  <div className="w-8 h-8 rounded-full bg-[hsl(var(--mollvero-coral))] flex items-center justify-center shrink-0">
-                    <b.icon className="w-4 h-4 text-white" strokeWidth={2} />
+              {/* Floating benefit pills */}
+              <div className="absolute inset-0 flex flex-col justify-end p-10 pb-14 gap-3">
+                {benefits.map((b, i) => (
+                  <div
+                    key={i}
+                    className="inline-flex items-center gap-3 bg-white/90 backdrop-blur-sm rounded-full px-5 py-3 w-fit shadow-lg"
+                    style={{ animationDelay: `${i * 0.15}s` }}
+                  >
+                    <div className="w-8 h-8 rounded-full bg-[hsl(var(--mollvero-coral))] flex items-center justify-center shrink-0">
+                      <b.icon className="w-4 h-4 text-white" strokeWidth={2} />
+                    </div>
+                    <span className="text-sm font-semibold text-foreground">{b.label}</span>
                   </div>
-                  <span className="text-sm font-semibold text-foreground">{b.label}</span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
