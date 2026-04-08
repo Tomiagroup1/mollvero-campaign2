@@ -19,7 +19,7 @@ const CtaBanner = () => {
       <div className="absolute bottom-0 left-[40%] w-[300px] h-[300px] bg-white/[0.04] rounded-full translate-y-1/2" />
 
       <div className="container mx-auto px-6 lg:px-12 relative">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch min-h-[600px] py-10">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-stretch min-h-[700px] py-16">
           {/* Left — image + floating benefit pills */}
           <div className="relative hidden lg:block">
             <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl">
