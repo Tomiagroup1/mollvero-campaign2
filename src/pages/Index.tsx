@@ -5,6 +5,7 @@ import HowItWorksSection from "@/components/HowItWorksSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import TrustSection from "@/components/TrustSection";
 import FaqSection from "@/components/FaqSection";
+import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
 
 const Index = () => {
