@@ -37,7 +37,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 0%;
 
-    --primary: 2 100% 69%;
+    --primary: 11 100% 68%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 133 62% 82%;
@@ -59,7 +59,7 @@
     --radius: 0.75rem;
 
     /* Mollvero brand extended palette */
-    --mollvero-coral: 10 100% 69%;
+    --mollvero-coral: 11 100% 68%;
     --mollvero-green-light: 123 62% 82%;
     --mollvero-green-dark: 123 26% 64%;
     --mollvero-beige: 30 47% 84%;
