@@ -18,6 +18,7 @@ const Index = () => {
       <FeaturesSection />
       <TrustSection />
       <FaqSection />
+      <CtaBanner />
       <Footer />
     </div>
   );
