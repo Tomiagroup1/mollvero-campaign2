@@ -23,7 +23,7 @@ const steps = [
     title: "Dodanie",
     desc: "Hotový nábytok vám doručíme priamo domov v dohodnutom termíne.",
   },
-
+];
 const HowItWorksSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
