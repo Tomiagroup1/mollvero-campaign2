@@ -57,12 +57,6 @@ const steps = [
   },
 ];
 
-/* 
- * Step positions on the snake path (percentage along the SVG path).
- * Desktop: horizontal S-curve, steps positioned at specific points.
- * Mobile: vertical wave.
- */
-
 const HowItWorksSection = () => {
   const heading = useScrollReveal();
   const section = useScrollReveal();
@@ -95,36 +89,33 @@ const HowItWorksSection = () => {
             section.isVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          {/* SVG snake path */}
+          {/* SVG snake path — thick, smooth S-curve */}
           <svg
             className="absolute inset-0 w-full h-full pointer-events-none"
-            viewBox="0 0 900 600"
+            viewBox="0 0 900 520"
             preserveAspectRatio="xMidYMid meet"
             fill="none"
           >
             <path
-              d="M80,80 C250,80 350,80 500,80 C650,80 750,80 820,80
-                 C870,80 870,140 820,160 C750,190 650,200 500,200
-                 C350,200 250,200 180,200 C100,200 80,260 130,280
-                 C200,310 350,320 500,320 C650,320 750,320 820,320
-                 C870,320 870,380 820,400 C750,430 650,440 500,440
-                 C350,440 250,440 180,440 C130,440 100,480 130,500
-                 C180,530 350,540 500,540"
+              d="M60,70 C200,70 300,70 450,70 C600,70 700,70 840,70
+                 C890,70 890,150 840,170 C750,200 600,210 450,210
+                 C300,210 200,210 120,210 C60,210 60,290 120,310
+                 C200,340 300,350 450,350 C600,350 700,350 840,350
+                 C890,350 890,430 840,450 C750,470 600,470 500,470"
               stroke="hsl(var(--mollvero-coral))"
-              strokeWidth="1.5"
-              strokeDasharray="8 6"
+              strokeWidth="3"
+              strokeDasharray="10 8"
               strokeLinecap="round"
-              opacity="0.25"
+              opacity="0.35"
             />
           </svg>
 
-          {/* Steps positioned on the path */}
-          <div className="relative z-10" style={{ height: "560px" }}>
-            {/* Step 1 — top left */}
+          {/* Steps positioned directly on the path */}
+          <div className="relative z-10" style={{ height: "520px" }}>
+            {/* Step 1 — top left, on the line */}
             <StepMarker
               step={steps[0]}
-              style={{ top: "40px", left: "4%" }}
-              labelPosition="bottom"
+              style={{ top: "34px", left: "3%" }}
               delay={0}
               visible={section.isVisible}
             />
@@ -132,45 +123,40 @@ const HowItWorksSection = () => {
             {/* Step 2 — top right */}
             <StepMarker
               step={steps[1]}
-              style={{ top: "40px", right: "8%" }}
-              labelPosition="bottom"
-              delay={0.1}
+              style={{ top: "34px", right: "5%" }}
+              delay={0.12}
               visible={section.isVisible}
             />
 
-            {/* Step 3 — mid-right (on the curve going back) */}
+            {/* Step 3 — second row, right side (curve back) */}
             <StepMarker
               step={steps[2]}
-              style={{ top: "168px", right: "12%" }}
-              labelPosition="bottom"
-              delay={0.2}
+              style={{ top: "174px", right: "10%" }}
+              delay={0.24}
               visible={section.isVisible}
             />
 
-            {/* Step 4 — mid-left */}
+            {/* Step 4 — second row, left side */}
             <StepMarker
               step={steps[3]}
-              style={{ top: "168px", left: "8%" }}
-              labelPosition="bottom"
-              delay={0.3}
+              style={{ top: "174px", left: "3%" }}
+              delay={0.36}
               visible={section.isVisible}
             />
 
-            {/* Step 5 — bottom-left */}
+            {/* Step 5 — third row, left */}
             <StepMarker
               step={steps[4]}
-              style={{ top: "296px", left: "4%" }}
-              labelPosition="bottom"
-              delay={0.4}
+              style={{ top: "314px", left: "3%" }}
+              delay={0.48}
               visible={section.isVisible}
             />
 
-            {/* Step 6 — bottom-right (the goal) */}
+            {/* Step 6 — bottom center (the goal) */}
             <StepMarker
               step={steps[5]}
-              style={{ top: "420px", left: "40%", transform: "translateX(-50%)" }}
-              labelPosition="bottom"
-              delay={0.5}
+              style={{ top: "414px", left: "45%", transform: "translateX(-50%)" }}
+              delay={0.6}
               visible={section.isVisible}
             />
           </div>
@@ -178,8 +164,7 @@ const HowItWorksSection = () => {
 
         {/* Mobile: Vertical wave */}
         <div className="md:hidden relative">
-          {/* Vertical dashed line */}
-          <div className="absolute left-6 top-0 bottom-0 w-px border-l border-dashed border-mollvero-coral/25" />
+          <div className="absolute left-6 top-0 bottom-0 w-[3px] border-l-[3px] border-dashed border-mollvero-coral/30" />
 
           <div className="space-y-8 pl-14">
             {steps.map((step, i) => (
@@ -195,7 +180,6 @@ const HowItWorksSection = () => {
 interface StepMarkerProps {
   step: (typeof steps)[0];
   style: React.CSSProperties;
-  labelPosition: "top" | "bottom";
   delay: number;
   visible: boolean;
 }
@@ -210,12 +194,12 @@ const StepMarker = ({ step, style, delay, visible }: StepMarkerProps) => {
       }`}
       style={{ ...style, transitionDelay: visible ? `${delay}s` : "0s" }}
     >
-      {/* Circle marker */}
+      {/* Circle marker sitting ON the line */}
       <div
-        className={`w-12 h-12 rounded-full flex items-center justify-center border shadow-sm ${
+        className={`w-14 h-14 rounded-full flex items-center justify-center border-2 shadow-md ${
           isFinal
             ? "border-mollvero-coral bg-mollvero-coral/10 shadow-mollvero-coral/20"
-            : "border-primary/20 bg-background"
+            : "border-primary/30 bg-background"
         }`}
       >
         {isFinal ? (
@@ -223,7 +207,7 @@ const StepMarker = ({ step, style, delay, visible }: StepMarkerProps) => {
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
           </svg>
         ) : (
-          <span className="text-lg font-bold text-primary">{step.number}</span>
+          <span className="text-xl font-bold text-primary">{step.number}</span>
         )}
       </div>
 
@@ -253,12 +237,11 @@ const MobileStep = ({ step, index }: MobileStepProps) => {
       }`}
       style={{ transitionDelay: row.isVisible ? `${index * 0.08}s` : "0s" }}
     >
-      {/* Dot on the line */}
       <div
-        className={`absolute -left-14 top-0 w-10 h-10 rounded-full flex items-center justify-center border ${
+        className={`absolute -left-14 top-0 w-11 h-11 rounded-full flex items-center justify-center border-2 ${
           isFinal
             ? "border-mollvero-coral bg-mollvero-coral/10"
-            : "border-primary/20 bg-background"
+            : "border-primary/30 bg-background"
         }`}
       >
         {isFinal ? (
