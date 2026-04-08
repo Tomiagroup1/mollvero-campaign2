@@ -24,37 +24,25 @@ const useScrollReveal = () => {
 };
 
 const steps = [
-  {
-    number: "1",
-    title: "Registrácia",
-    description: "Zaregistrujte sa a počkajte na manuálne schválenie účtu firmou.",
-  },
-  {
-    number: "2",
-    title: "Výber nábytku",
-    description: "V katalógu si zvoľte kategóriu alebo konkrétny produkt.",
-  },
-  {
-    number: "3",
-    title: "Konfigurácia",
-    description: "Navolte si rozmery, vnútorné členenie a materiál.",
-  },
-  {
-    number: "4",
-    title: "3D kontrola",
-    description: "Overte si výsledný vzhľad v 3D modeli.",
-  },
-  {
-    number: "5",
-    title: "Objednávka",
-    description: "Vložte tovar do košíka a vyplňte svoje údaje.",
-  },
-  {
-    number: "6",
-    title: "Platba",
-    description: "Dokončite nákup a zaplaťte.",
-    isFinal: true,
-  },
+  { number: "1", title: "Registrácia", description: "Zaregistrujte sa a počkajte na manuálne schválenie účtu firmou." },
+  { number: "2", title: "Výber nábytku", description: "V katalógu si zvoľte kategóriu alebo konkrétny produkt." },
+  { number: "3", title: "Konfigurácia", description: "Navolte si rozmery, vnútorné členenie a materiál." },
+  { number: "4", title: "3D kontrola", description: "Overte si výsledný vzhľad v 3D modeli." },
+  { number: "5", title: "Objednávka", description: "Vložte tovar do košíka a vyplňte svoje údaje." },
+  { number: "6", title: "Platba", description: "Dokončite nákup a zaplaťte.", isFinal: true },
+];
+
+/* Desktop step positions — asymmetric, organic placement along the river */
+const desktopPositions: Array<{
+  top: string; left?: string; right?: string;
+  labelSide: "right" | "left" | "bottom";
+}> = [
+  { top: "10px",  left: "8%",   labelSide: "right" },
+  { top: "55px",  right: "12%", labelSide: "left" },
+  { top: "155px", left: "28%",  labelSide: "right" },
+  { top: "245px", right: "18%", labelSide: "left" },
+  { top: "320px", left: "14%",  labelSide: "right" },
+  { top: "395px", left: "44%",  labelSide: "bottom" },
 ];
 
 const HowItWorksSection = () => {
@@ -82,90 +70,60 @@ const HowItWorksSection = () => {
           </h2>
         </div>
 
-        {/* Desktop: Horizontal S-curve journey */}
+        {/* Desktop: The River */}
         <div
           ref={section.ref}
           className={`hidden md:block relative transition-all duration-1000 ${
             section.isVisible ? "opacity-100" : "opacity-0"
           }`}
+          style={{ height: "480px" }}
         >
-          {/* SVG snake path — thick, smooth S-curve */}
+          {/* The River — one continuous organic SVG path */}
           <svg
             className="absolute inset-0 w-full h-full pointer-events-none"
-            viewBox="0 0 900 520"
+            viewBox="0 0 900 480"
             preserveAspectRatio="xMidYMid meet"
             fill="none"
           >
+            {/* Main river path — organic S-curve with varying curvature */}
             <path
-              d="M60,70 C200,70 300,70 450,70 C600,70 700,70 840,70
-                 C890,70 890,150 840,170 C750,200 600,210 450,210
-                 C300,210 200,210 120,210 C60,210 60,290 120,310
-                 C200,340 300,350 450,350 C600,350 700,350 840,350
-                 C890,350 890,430 840,450 C750,470 600,470 500,470"
+              d="M95,35
+                 C180,35 320,50 420,70
+                 C560,96 680,78 800,80
+                 C860,81 870,110 820,130
+                 C720,170 480,155 340,180
+                 C240,198 200,220 260,250
+                 C340,290 520,275 680,270
+                 C780,266 830,290 790,320
+                 C730,360 560,350 420,345
+                 C300,340 220,360 240,390
+                 C270,425 380,430 460,425"
               stroke="hsl(var(--mollvero-coral))"
-              strokeWidth="3"
-              strokeDasharray="10 8"
+              strokeWidth="3.5"
+              strokeDasharray="12 8"
               strokeLinecap="round"
-              opacity="0.35"
+              opacity="0.3"
             />
+            {/* Flourish at the end — small spiral/star burst */}
+            <circle cx="460" cy="425" r="6" fill="hsl(var(--mollvero-coral))" opacity="0.2" />
+            <circle cx="460" cy="425" r="12" stroke="hsl(var(--mollvero-coral))" strokeWidth="1.5" strokeDasharray="3 3" fill="none" opacity="0.2" />
           </svg>
 
-          {/* Steps positioned directly on the path */}
-          <div className="relative z-10" style={{ height: "520px" }}>
-            {/* Step 1 — top left, on the line */}
-            <StepMarker
-              step={steps[0]}
-              style={{ top: "34px", left: "3%" }}
-              delay={0}
+          {/* Steps — asymmetrically placed along the river */}
+          {steps.map((step, i) => (
+            <RiverStop
+              key={i}
+              step={step}
+              position={desktopPositions[i]}
+              delay={i * 0.12}
               visible={section.isVisible}
             />
-
-            {/* Step 2 — top right */}
-            <StepMarker
-              step={steps[1]}
-              style={{ top: "34px", right: "5%" }}
-              delay={0.12}
-              visible={section.isVisible}
-            />
-
-            {/* Step 3 — second row, right side (curve back) */}
-            <StepMarker
-              step={steps[2]}
-              style={{ top: "174px", right: "10%" }}
-              delay={0.24}
-              visible={section.isVisible}
-            />
-
-            {/* Step 4 — second row, left side */}
-            <StepMarker
-              step={steps[3]}
-              style={{ top: "174px", left: "3%" }}
-              delay={0.36}
-              visible={section.isVisible}
-            />
-
-            {/* Step 5 — third row, left */}
-            <StepMarker
-              step={steps[4]}
-              style={{ top: "314px", left: "3%" }}
-              delay={0.48}
-              visible={section.isVisible}
-            />
-
-            {/* Step 6 — bottom center (the goal) */}
-            <StepMarker
-              step={steps[5]}
-              style={{ top: "414px", left: "45%", transform: "translateX(-50%)" }}
-              delay={0.6}
-              visible={section.isVisible}
-            />
-          </div>
+          ))}
         </div>
 
-        {/* Mobile: Vertical wave */}
+        {/* Mobile: Vertical river */}
         <div className="md:hidden relative">
-          <div className="absolute left-6 top-0 bottom-0 w-[3px] border-l-[3px] border-dashed border-mollvero-coral/30" />
-
+          <div className="absolute left-6 top-0 bottom-0 w-[3px] border-l-[3px] border-dashed border-mollvero-coral/25 rounded-full" />
           <div className="space-y-8 pl-14">
             {steps.map((step, i) => (
               <MobileStep key={i} step={step} index={i} />
@@ -177,55 +135,67 @@ const HowItWorksSection = () => {
   );
 };
 
-interface StepMarkerProps {
+/* A single stop on the river — number circle + floating label */
+const RiverStop = ({
+  step,
+  position,
+  delay,
+  visible,
+}: {
   step: (typeof steps)[0];
-  style: React.CSSProperties;
+  position: (typeof desktopPositions)[0];
   delay: number;
   visible: boolean;
-}
-
-const StepMarker = ({ step, style, delay, visible }: StepMarkerProps) => {
+}) => {
   const isFinal = "isFinal" in step && step.isFinal;
+
+  const posStyle: React.CSSProperties = {
+    top: position.top,
+    ...(position.left ? { left: position.left } : {}),
+    ...(position.right ? { right: position.right } : {}),
+    transitionDelay: visible ? `${delay}s` : "0s",
+  };
 
   return (
     <div
-      className={`absolute flex flex-col items-center transition-all duration-700 ease-out ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+      className={`absolute transition-all duration-700 ease-out ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       }`}
-      style={{ ...style, transitionDelay: visible ? `${delay}s` : "0s" }}
+      style={posStyle}
     >
-      {/* Circle marker sitting ON the line */}
-      <div
-        className={`w-14 h-14 rounded-full flex items-center justify-center border-2 shadow-md ${
-          isFinal
-            ? "border-mollvero-coral bg-mollvero-coral/10 shadow-mollvero-coral/20"
-            : "border-primary/30 bg-background"
-        }`}
-      >
-        {isFinal ? (
-          <svg className="w-5 h-5 text-mollvero-coral" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
-        ) : (
-          <span className="text-xl font-bold text-primary">{step.number}</span>
-        )}
-      </div>
+      <div className={`flex items-center gap-3 ${
+        position.labelSide === "left" ? "flex-row-reverse" : ""
+      } ${position.labelSide === "bottom" ? "flex-col" : ""}`}>
+        {/* Number circle */}
+        <div
+          className={`w-14 h-14 rounded-full flex items-center justify-center border-2 shadow-lg shrink-0 ${
+            isFinal
+              ? "border-mollvero-coral bg-mollvero-coral/10 shadow-mollvero-coral/25"
+              : "border-primary/25 bg-background shadow-primary/10"
+          }`}
+        >
+          {isFinal ? (
+            <svg className="w-6 h-6 text-mollvero-coral" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+          ) : (
+            <span className="text-xl font-bold text-primary">{step.number}</span>
+          )}
+        </div>
 
-      {/* Label */}
-      <div className="mt-2 text-center max-w-[160px]">
-        <h3 className="text-sm lg:text-base font-bold text-foreground leading-tight">{step.title}</h3>
-        <p className="text-xs text-muted-foreground leading-snug mt-0.5">{step.description}</p>
+        {/* Floating label */}
+        <div className={`max-w-[180px] ${
+          position.labelSide === "left" ? "text-right" : ""
+        } ${position.labelSide === "bottom" ? "text-center" : ""}`}>
+          <h3 className="text-sm lg:text-base font-bold text-foreground leading-tight">{step.title}</h3>
+          <p className="text-xs text-muted-foreground leading-snug mt-0.5">{step.description}</p>
+        </div>
       </div>
     </div>
   );
 };
 
-interface MobileStepProps {
-  step: (typeof steps)[0];
-  index: number;
-}
-
-const MobileStep = ({ step, index }: MobileStepProps) => {
+const MobileStep = ({ step, index }: { step: (typeof steps)[0]; index: number }) => {
   const row = useScrollReveal();
   const isFinal = "isFinal" in step && step.isFinal;
 
@@ -241,7 +211,7 @@ const MobileStep = ({ step, index }: MobileStepProps) => {
         className={`absolute -left-14 top-0 w-11 h-11 rounded-full flex items-center justify-center border-2 ${
           isFinal
             ? "border-mollvero-coral bg-mollvero-coral/10"
-            : "border-primary/30 bg-background"
+            : "border-primary/25 bg-background"
         }`}
       >
         {isFinal ? (
@@ -252,7 +222,6 @@ const MobileStep = ({ step, index }: MobileStepProps) => {
           <span className="text-sm font-bold text-primary">{step.number}</span>
         )}
       </div>
-
       <div>
         <h3 className="text-base font-bold text-foreground leading-tight">{step.title}</h3>
         <p className="text-sm text-muted-foreground leading-snug mt-0.5">{step.description}</p>
