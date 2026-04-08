@@ -3,23 +3,16 @@ import { useEffect, useRef, useState } from "react";
 const useScrollReveal = () => {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.12 }
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setIsVisible(true); obs.disconnect(); } },
+      { threshold: 0.15 }
     );
-    observer.observe(el);
-    return () => observer.disconnect();
+    obs.observe(el);
+    return () => obs.disconnect();
   }, []);
-
   return { ref, isVisible };
 };
 
@@ -72,25 +65,11 @@ const features = [
 ];
 
 const FeaturesSection = () => {
-  const heading = useScrollReveal();
-
   return (
-    <section className="py-20 lg:py-24 bg-muted/20 relative overflow-hidden">
-      <div className="container mx-auto px-6 lg:px-12 relative">
-        <div
-          ref={heading.ref}
-          className={`text-center mb-12 lg:mb-16 transition-all duration-700 ${heading.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
-        >
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3">
-            Prečo Mollvero
-          </p>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground">
-            Navrhnite. Objednajte.{" "}
-            <span className="font-script font-normal text-primary">Doručíme.</span>
-          </h2>
-        </div>
-
-        <div className="flex flex-col gap-2 lg:gap-3 max-w-2xl mx-auto">
+    <section className="py-24 lg:py-32 bg-muted/20 relative overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6 lg:px-12 relative">
+        {/* Spacious zigzag layout */}
+        <div className="flex flex-col gap-20 lg:gap-28">
           {features.map((feature, index) => (
             <FeatureRow key={index} feature={feature} index={index} />
           ))}
@@ -107,44 +86,41 @@ interface FeatureRowProps {
 
 const FeatureRow = ({ feature, index }: FeatureRowProps) => {
   const row = useScrollReveal();
-  const isLeft = feature.align === "left";
+  const isRight = feature.align === "right";
 
   return (
     <div
       ref={row.ref}
-      className={`relative flex items-center transition-all duration-700 ease-out ${
-        row.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      className={`relative transition-all duration-700 ease-out ${
+        row.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
-      style={{ transitionDelay: row.isVisible ? `${index * 0.05}s` : "0s" }}
+      style={{ transitionDelay: row.isVisible ? `${index * 0.08}s` : "0s" }}
     >
-      {/* Brand SVG shape — smaller, tighter */}
+      {/* Decorative triangle */}
       <svg
-        className={`absolute ${isLeft ? "right-2 md:right-[8%]" : "left-2 md:left-[8%]"} top-1/2 -translate-y-1/2 opacity-[0.15] pointer-events-none transition-all duration-1000 ${
-          row.isVisible ? "scale-100 opacity-[0.15]" : "scale-75 opacity-0"
-        }`}
-        style={{
-          transitionDelay: row.isVisible ? `${index * 0.05 + 0.1}s` : "0s",
-          width: "clamp(50px, 8vw, 90px)",
-          height: "auto",
-        }}
+        className={`absolute pointer-events-none opacity-[0.12] ${
+          isRight ? "right-0 lg:right-[5%]" : "left-0 lg:left-[5%]"
+        } top-1/2 -translate-y-1/2`}
+        style={{ width: "clamp(80px, 12vw, 160px)", height: "auto" }}
         viewBox={feature.viewBox}
         fill="none"
       >
         <path d={feature.path} fill={`hsl(var(${feature.fillVar}))`} />
       </svg>
 
-      {/* Content */}
+      {/* Text content */}
       <div
-        className={`relative z-10 flex-1 py-2 ${
-          isLeft ? "md:text-left md:pl-1" : "md:text-right md:pr-1 md:ml-auto"
+        className={`relative z-10 max-w-lg ${
+          isRight ? "ml-auto text-right" : "mr-auto text-left"
         }`}
-        style={{ maxWidth: "440px", marginLeft: isLeft ? undefined : "auto", marginRight: isLeft ? "auto" : undefined }}
       >
-        <h3 className="text-base md:text-lg lg:text-xl font-bold text-foreground leading-tight">
+        <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight">
           {feature.title}{" "}
-          <span className="font-script font-normal text-primary">{feature.highlight}</span>
+          <span className="font-script font-normal text-primary">
+            {feature.highlight}
+          </span>
         </h3>
-        <p className="text-xs md:text-sm text-muted-foreground leading-relaxed mt-0.5">
+        <p className="text-base md:text-lg text-muted-foreground leading-relaxed mt-3 max-w-md">
           {feature.description}
         </p>
       </div>
