@@ -1,130 +1,139 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import benefitMaterialy from "@/assets/benefit-materialy.jpg";
+import benefitInstalacia from "@/assets/benefit-instalacia.jpg";
+import benefitKonfigurator from "@/assets/benefit-konfigurator.jpg";
+import benefitVyroba from "@/assets/benefit-vyroba.jpg";
 
-const useScrollReveal = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setIsVisible(true); obs.disconnect(); } },
-      { threshold: 0.15 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-  return { ref, isVisible };
-};
-
-const features = [
+const benefits = [
   {
-    title: "Dodanie do",
-    highlight: "14 dní",
-    description: "Váš nábytok na mieru u vás doma za dva týždne. Konkurencia čaká mesiace.",
-    align: "left" as const,
-    viewBox: "0 0 296.82 235.71",
-    path: "M141.26,235.71c-1.26,0-2.52-.05-3.81-.1-21.2-1.34-39.39-13.52-48.7-32.63L1.72,24.45C-2.39,16.03,1.11,5.85,9.55,1.72c8.44-4.1,18.59-.61,22.72,7.84l87.02,178.5c3.87,7.95,11.47,13.05,20.3,13.6,8.73.66,16.99-3.55,21.85-10.95L265.62,31.53c5.13-7.84,15.65-10.08,23.51-4.92,7.86,5.13,10.05,15.66,4.92,23.52l-104.17,159.19c-10.91,16.71-28.87,26.36-48.57,26.36l-.05.03Z",
-    fillVar: "--mollvero-yellow",
+    title: "Kvalitné vstupné materiály",
+    description: "Používame len overené materiály od preverených dodávateľov. Každý kus dreva prešiel dôkladnou kontrolou kvality.",
+    image: benefitMaterialy,
+  },
+  {
+    title: "Inštalácia do 14 dní",
+    description: "Od objednávky po hotový nábytok u vás doma za dva týždne. Konkurencia čaká mesiace — my nie.",
+    image: benefitInstalacia,
   },
   {
     title: "Online konfigurátor",
-    highlight: "jednoducho a intuitívne",
-    description: "Navrhnite si nábytok priamo v prehliadači — bez čakania, bez kompromisov.",
-    align: "right" as const,
-    viewBox: "0 0 286.64 325.92",
-    path: "M62.44,325.92c-14.85,0-29.49-5.48-41.48-16.16C.06,291.08-5.8,262.63,6.05,237.29L111.86,11.05c4.49-9.56,15.92-13.71,25.53-9.27l146.77,181.11c5.48,9.06,1.4,19.26-7.68,24.74l-181.52,109.06c-10.27,6.16-21.46,9.21-32.53,9.21v.03Z",
-    fillVar: "--mollvero-blue-light",
+    description: "Navrhnite si nábytok priamo v prehliadači — jednoducho a intuitívne, bez čakania, bez kompromisov.",
+    image: benefitKonfigurator,
   },
   {
-    title: "Kvalita z masívu",
-    highlight: "ekologický prístup",
-    description: "Udržateľné materiály, minimálny odpad. Nábytok, ktorý vydrží generácie.",
-    align: "left" as const,
-    viewBox: "0 0 253.17 288.09",
-    path: "M55.32,288.09c-13.16,0-26.13-4.84-36.75-14.29C.06,257.29-5.14,232.14,5.36,209.74L99.11,9.77c3.98-8.45,14.1-12.12,22.62-8.19,8.51,3.95,12.21,14,8.25,22.45L36.23,223.98c-4.9,10.47-.58,19.57,5.09,24.62,5.67,5.05,15.26,8.3,25.2,2.38l160.82-96.4c8.07-4.82,18.53-2.25,23.38,5.73,4.85,8.01,2.27,18.37-5.77,23.21l-160.82,96.4c-9.1,5.44-19.01,8.14-28.82,8.14v.03Z",
-    fillVar: "--mollvero-green-light",
-  },
-  {
-    title: "Dovoz a montáž",
-    highlight: "bez stresu",
-    description: "Dovezieme a montáž je hračka. Vy si len užívate výsledok.",
-    align: "right" as const,
-    viewBox: "0 0 238.62 325.92",
-    path: "M182.6,325.92c-6.67,0-13.41-1.19-19.98-3.68L10.63,265.3c-8.47-3.17-12.75-12.6-9.58-21.07C1.04,244.23,112.52,4.38,120.97,1.11c8.44-3.27,17.9.91,21.2,9.36l92.57,238.9c8.11,20.92,3.35,43.84-12.45,59.79-10.85,10.95-25.02,16.76-39.65,16.76h-.02Z",
-    fillVar: "--mollvero-beige",
-  },
-  {
-    title: "Slovenský výrobca",
-    highlight: "férové ceny",
-    description: "Žiadni prostredníci. Priama komunikácia, slovenská kvalita.",
-    align: "left" as const,
-    viewBox: "0 0 286.64 325.92",
-    path: "M62.44,325.92c-14.85,0-29.49-5.48-41.48-16.16C.06,291.08-5.8,262.63,6.05,237.29L111.86,11.05c4.49-9.56,15.92-13.71,25.53-9.27l146.77,181.11c5.48,9.06,1.4,19.26-7.68,24.74l-181.52,109.06c-10.27,6.16-21.46,9.21-32.53,9.21v.03Z",
-    fillVar: "--mollvero-purple",
+    title: "Slovenská výroba",
+    description: "Žiadni prostredníci. Priama komunikácia, férové ceny a nábytok vyrobený na Slovensku s láskou k remeslu.",
+    image: benefitVyroba,
   },
 ];
 
 const FeaturesSection = () => {
+  const [active, setActive] = useState(0);
+
+  const prev = () => setActive((a) => (a === 0 ? benefits.length - 1 : a - 1));
+  const next = () => setActive((a) => (a === benefits.length - 1 ? 0 : a + 1));
+
+  // Show 2 cards: active and next
+  const secondIdx = (active + 1) % benefits.length;
+
   return (
-    <section className="py-24 lg:py-32 bg-muted/20 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 lg:px-12 relative">
-        {/* Spacious zigzag layout */}
-        <div className="flex flex-col gap-20 lg:gap-28">
-          {features.map((feature, index) => (
-            <FeatureRow key={index} feature={feature} index={index} />
+    <section className="py-24 lg:py-32 bg-background relative overflow-hidden">
+      {/* Decorative coral shape */}
+      <div className="absolute -right-20 top-1/2 -translate-y-1/2 w-[400px] h-[600px] opacity-[0.08] pointer-events-none">
+        <svg viewBox="0 0 286.64 325.92" fill="none" className="w-full h-full">
+          <path
+            d="M62.44,325.92c-14.85,0-29.49-5.48-41.48-16.16C.06,291.08-5.8,262.63,6.05,237.29L111.86,11.05c4.49-9.56,15.92-13.71,25.53-9.27l146.77,181.11c5.48,9.06,1.4,19.26-7.68,24.74l-181.52,109.06c-10.27,6.16-21.46,9.21-32.53,9.21v.03Z"
+            fill="hsl(var(--mollvero-coral))"
+          />
+        </svg>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
+        {/* Step indicators */}
+        <div className="flex items-center gap-0 mb-12 max-w-xs">
+          {benefits.map((_, i) => (
+            <div key={i} className="flex items-center">
+              <button
+                onClick={() => setActive(i)}
+                className={`w-9 h-9 rounded-full border-2 flex items-center justify-center text-sm font-medium transition-all duration-300 ${
+                  i === active
+                    ? "border-foreground text-foreground"
+                    : "border-muted-foreground/30 text-muted-foreground/50"
+                }`}
+              >
+                {i + 1}.
+              </button>
+              {i < benefits.length - 1 && (
+                <div
+                  className={`w-12 h-[2px] transition-colors duration-300 ${
+                    i < active ? "bg-foreground" : "bg-muted-foreground/20"
+                  }`}
+                />
+              )}
+            </div>
           ))}
+        </div>
+
+        {/* Content grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          {/* Left — text */}
+          <div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-[1.1] mb-5">
+              Benefity výroby, ktoré vám dáme len my.
+            </h2>
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-md">
+              Spájame moderné technológie s tradičnou remeselnou precíznosťou, aby sme vám priniesli nábytok na mieru, ktorý bude slúžiť roky.
+            </p>
+          </div>
+
+          {/* Right — image cards */}
+          <div className="relative">
+            <div className="flex gap-4 lg:gap-6">
+              {[active, secondIdx].map((idx, cardPos) => (
+                <div
+                  key={`${idx}-${cardPos}`}
+                  className="relative flex-1 aspect-[3/4] rounded-2xl overflow-hidden group"
+                >
+                  <img
+                    src={benefits[idx].image}
+                    alt={benefits[idx].title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    width={640}
+                    height={800}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-xl md:text-2xl font-bold text-white leading-tight">
+                      {benefits[idx].title}
+                    </h3>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Navigation arrows */}
+            <div className="flex gap-3 justify-end mt-6">
+              <button
+                onClick={prev}
+                className="w-11 h-11 rounded-full border-2 border-foreground/20 flex items-center justify-center hover:border-foreground/60 transition-colors"
+                aria-label="Predchádzajúci"
+              >
+                <ChevronLeft className="w-5 h-5 text-foreground" />
+              </button>
+              <button
+                onClick={next}
+                className="w-11 h-11 rounded-full border-2 border-foreground/20 flex items-center justify-center hover:border-foreground/60 transition-colors"
+                aria-label="Ďalší"
+              >
+                <ChevronRight className="w-5 h-5 text-foreground" />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-  );
-};
-
-interface FeatureRowProps {
-  feature: (typeof features)[0];
-  index: number;
-}
-
-const FeatureRow = ({ feature, index }: FeatureRowProps) => {
-  const row = useScrollReveal();
-  const isRight = feature.align === "right";
-
-  return (
-    <div
-      ref={row.ref}
-      className={`relative transition-all duration-700 ease-out ${
-        row.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      }`}
-      style={{ transitionDelay: row.isVisible ? `${index * 0.08}s` : "0s" }}
-    >
-      {/* Decorative triangle */}
-      <svg
-        className={`absolute pointer-events-none opacity-[0.12] ${
-          isRight ? "right-0 lg:right-[5%]" : "left-0 lg:left-[5%]"
-        } top-1/2 -translate-y-1/2`}
-        style={{ width: "clamp(80px, 12vw, 160px)", height: "auto" }}
-        viewBox={feature.viewBox}
-        fill="none"
-      >
-        <path d={feature.path} fill={`hsl(var(${feature.fillVar}))`} />
-      </svg>
-
-      {/* Text content */}
-      <div
-        className={`relative z-10 max-w-lg ${
-          isRight ? "ml-auto text-right" : "mr-auto text-left"
-        }`}
-      >
-        <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight">
-          {feature.title}{" "}
-          <span className="font-script font-normal text-primary">
-            {feature.highlight}
-          </span>
-        </h3>
-        <p className="text-base md:text-lg text-muted-foreground leading-relaxed mt-3 max-w-md">
-          {feature.description}
-        </p>
-      </div>
-    </div>
   );
 };
 
