@@ -25,12 +25,10 @@ const steps = [
   { n: "6", title: "Platba", desc: "Dokončite nákup a zaplaťte.", isFinal: true },
 ];
 
-/* Triangle brand shape (M Asset 40 style) used as marker for every step */
 const TRIANGLE_VB = "0 0 286.64 325.92";
 const TRIANGLE_D =
   "M62.44,325.92c-14.85,0-29.49-5.48-41.48-16.16C.06,291.08-5.8,262.63,6.05,237.29L111.86,11.05c4.49-9.56,15.92-13.71,25.53-9.27l146.77,181.11c5.48,9.06,1.4,19.26-7.68,24.74l-181.52,109.06c-10.27,6.16-21.46,9.21-32.53,9.21v.03Z";
 
-/* Triangle colors per step — cycling through brand palette */
 const triangleColors = [
   "hsl(var(--mollvero-green-light))",
   "hsl(var(--mollvero-yellow))",
@@ -40,23 +38,23 @@ const triangleColors = [
   "hsl(var(--mollvero-coral))",
 ];
 
-/* Step positions — spread out vertically for breathing room */
+/* Stretched positions — more vertical breathing room */
 const desktopPos = [
-  { x: 100,  y: 60,   labelSide: "right" as const },
-  { x: 440,  y: 110,  labelSide: "right" as const },
-  { x: 780,  y: 190,  labelSide: "left" as const },
-  { x: 260,  y: 300,  labelSide: "right" as const },
-  { x: 580,  y: 380,  labelSide: "left" as const },
-  { x: 880,  y: 440,  labelSide: "bottom" as const },
+  { x: 100,  y: 70,   labelSide: "right" as const },
+  { x: 440,  y: 150,  labelSide: "right" as const },
+  { x: 780,  y: 260,  labelSide: "left" as const },
+  { x: 260,  y: 390,  labelSide: "right" as const },
+  { x: 580,  y: 490,  labelSide: "left" as const },
+  { x: 880,  y: 570,  labelSide: "bottom" as const },
 ];
 
-/* Gentle river — only 2 soft sweeping curves */
+/* Gentle river stretched to match new positions */
 const RIVER =
-  "M100,80 C220,80 340,85 440,110 " +
-  "Q580,145 700,170 Q840,200 800,220 " +
-  "Q740,250 580,270 Q420,285 300,300 " +
-  "Q180,315 220,340 Q320,375 460,380 " +
-  "Q640,385 750,400 Q860,415 900,450";
+  "M100,90 C220,90 340,100 440,150 " +
+  "Q580,200 700,230 Q840,260 800,290 " +
+  "Q740,320 580,350 Q420,370 300,390 " +
+  "Q180,410 220,440 Q320,475 460,490 " +
+  "Q640,500 750,520 Q860,540 900,580";
 
 const TW = 55;
 const TH = 64;
@@ -66,14 +64,13 @@ const HowItWorksSection = () => {
   const river = useScrollReveal();
 
   return (
-    <section className="py-16 lg:py-24 bg-background relative overflow-hidden">
+    <section className="py-16 lg:py-28 bg-background relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/[0.02] rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-6 lg:px-12 relative">
-        {/* Heading */}
         <div
           ref={heading.ref}
-          className={`text-center mb-14 lg:mb-16 transition-all duration-700 ${
+          className={`text-center mb-14 lg:mb-18 transition-all duration-700 ${
             heading.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
@@ -95,11 +92,10 @@ const HowItWorksSection = () => {
         >
           <svg
             className="w-full"
-            viewBox="0 0 1000 520"
+            viewBox="0 0 1000 660"
             fill="none"
             preserveAspectRatio="xMidYMid meet"
           >
-            {/* The gentle river */}
             <path
               d={RIVER}
               stroke="hsl(var(--mollvero-coral))"
@@ -109,7 +105,6 @@ const HowItWorksSection = () => {
               opacity="0.22"
             />
 
-            {/* Steps — triangle markers on the path */}
             {desktopPos.map((pos, i) => {
               const step = steps[i];
               const isFinal = step.isFinal;
@@ -125,7 +120,6 @@ const HowItWorksSection = () => {
                     transitionDelay: river.isVisible ? `${i * 0.14}s` : "0s",
                   }}
                 >
-                  {/* Triangle brand shape */}
                   <svg
                     x={pos.x - TW / 2}
                     y={pos.y - TH / 2}
@@ -137,7 +131,6 @@ const HowItWorksSection = () => {
                     <path d={TRIANGLE_D} fill={color} />
                   </svg>
 
-                  {/* Step number centered on triangle */}
                   <text
                     x={pos.x}
                     y={pos.y + 4}
@@ -150,28 +143,27 @@ const HowItWorksSection = () => {
                     {step.n}
                   </text>
 
-                  {/* Label */}
                   {pos.labelSide === "right" && (
-                    <foreignObject x={pos.x + TW / 2 + 10} y={pos.y - 20} width="190" height="60">
+                    <foreignObject x={pos.x + TW / 2 + 12} y={pos.y - 22} width="200" height="72">
                       <div>
                         <p className="text-base font-extrabold text-foreground leading-tight">{step.title}</p>
-                        <p className="text-xs text-muted-foreground leading-snug mt-1">{step.desc}</p>
+                        <p className="text-[13px] font-medium text-foreground/70 leading-relaxed mt-1.5">{step.desc}</p>
                       </div>
                     </foreignObject>
                   )}
                   {pos.labelSide === "left" && (
-                    <foreignObject x={pos.x - TW / 2 - 200} y={pos.y - 20} width="190" height="60">
+                    <foreignObject x={pos.x - TW / 2 - 212} y={pos.y - 22} width="200" height="72">
                       <div className="text-right">
                         <p className="text-base font-extrabold text-foreground leading-tight">{step.title}</p>
-                        <p className="text-xs text-muted-foreground leading-snug mt-1">{step.desc}</p>
+                        <p className="text-[13px] font-medium text-foreground/70 leading-relaxed mt-1.5">{step.desc}</p>
                       </div>
                     </foreignObject>
                   )}
                   {pos.labelSide === "bottom" && (
-                    <foreignObject x={pos.x - 90} y={pos.y + TH / 2 + 6} width="180" height="55">
+                    <foreignObject x={pos.x - 100} y={pos.y + TH / 2 + 8} width="200" height="65">
                       <div className="text-center">
                         <p className="text-base font-extrabold text-foreground leading-tight">{step.title}</p>
-                        <p className="text-xs text-muted-foreground leading-snug mt-1">{step.desc}</p>
+                        <p className="text-[13px] font-medium text-foreground/70 leading-relaxed mt-1.5">{step.desc}</p>
                       </div>
                     </foreignObject>
                   )}
@@ -179,15 +171,14 @@ const HowItWorksSection = () => {
               );
             })}
 
-            {/* End flourish at step 6 */}
-            <circle cx={880} cy={440} r="35" stroke="hsl(var(--mollvero-coral))" strokeWidth="1" strokeDasharray="4 4" fill="none" opacity="0.12" />
+            <circle cx={880} cy={570} r="38" stroke="hsl(var(--mollvero-coral))" strokeWidth="1" strokeDasharray="4 4" fill="none" opacity="0.12" />
           </svg>
         </div>
 
-        {/* Mobile: vertical river */}
+        {/* Mobile */}
         <div className="md:hidden relative">
           <div className="absolute left-6 top-0 bottom-0 w-[3px] border-l-[3px] border-dashed border-mollvero-coral/20 rounded-full" />
-          <div className="space-y-8 pl-16">
+          <div className="space-y-9 pl-16">
             {steps.map((step, i) => (
               <MobileStep key={i} step={step} color={triangleColors[i]} index={i} />
             ))}
@@ -199,9 +190,7 @@ const HowItWorksSection = () => {
 };
 
 const MobileStep = ({ step, color, index }: {
-  step: (typeof steps)[0];
-  color: string;
-  index: number;
+  step: (typeof steps)[0]; color: string; index: number;
 }) => {
   const row = useScrollReveal();
   const isFinal = "isFinal" in step && step.isFinal;
@@ -214,24 +203,17 @@ const MobileStep = ({ step, color, index }: {
       }`}
       style={{ transitionDelay: row.isVisible ? `${index * 0.08}s` : "0s" }}
     >
-      {/* Triangle marker */}
       <div className="absolute -left-16 top-0 w-12 h-14 flex items-center justify-center">
-        <svg
-          className="absolute inset-0 w-full h-full"
-          viewBox={TRIANGLE_VB}
-          opacity={isFinal ? 0.4 : 0.25}
-        >
+        <svg className="absolute inset-0 w-full h-full" viewBox={TRIANGLE_VB} opacity={isFinal ? 0.4 : 0.25}>
           <path d={TRIANGLE_D} fill={color} />
         </svg>
-        <span className={`relative text-sm font-bold z-10 ${
-          isFinal ? "text-mollvero-coral" : "text-foreground"
-        }`}>
+        <span className={`relative text-sm font-bold z-10 ${isFinal ? "text-mollvero-coral" : "text-foreground"}`}>
           {step.n}
         </span>
       </div>
       <div>
         <h3 className="text-base font-extrabold text-foreground leading-tight">{step.title}</h3>
-        <p className="text-sm text-muted-foreground leading-snug mt-0.5">{step.desc}</p>
+        <p className="text-[13px] font-medium text-foreground/70 leading-relaxed mt-1">{step.desc}</p>
       </div>
     </div>
   );
