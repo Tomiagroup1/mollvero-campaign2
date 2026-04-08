@@ -61,7 +61,7 @@ const HeroSection = () => {
                 </div>
               </div>
               <p className="text-sm font-medium text-muted-foreground tracking-widest uppercase mt-1">
-                na prvú objednávku · limitovaná akcia
+                na prvú objednávku · platí pre prvých 300 registrovaných
               </p>
             </div>
 
