@@ -17,30 +17,33 @@ const useScrollReveal = () => {
 };
 
 const steps = [
-  { number: "1", title: "Registrácia", description: "Zaregistrujte sa a počkajte na schválenie účtu." },
-  { number: "2", title: "Výber nábytku", description: "Zvoľte si kategóriu alebo konkrétny produkt." },
-  { number: "3", title: "Konfigurácia", description: "Navolte rozmery, členenie a materiál." },
-  { number: "4", title: "3D kontrola", description: "Overte si výsledný vzhľad v 3D modeli." },
-  { number: "5", title: "Objednávka", description: "Vložte tovar do košíka a vyplňte údaje." },
-  { number: "6", title: "Platba", description: "Dokončite nákup a zaplaťte.", isFinal: true },
+  { n: "1", title: "Registrácia", desc: "Zaregistrujte sa a počkajte na schválenie účtu." },
+  { n: "2", title: "Výber nábytku", desc: "Zvoľte si kategóriu alebo konkrétny produkt." },
+  { n: "3", title: "Konfigurácia", desc: "Navolte rozmery, členenie a materiál." },
+  { n: "4", title: "3D kontrola", desc: "Overte si výsledný vzhľad v 3D modeli." },
+  { n: "5", title: "Objednávka", desc: "Vložte tovar do košíka a vyplňte údaje." },
+  { n: "6", title: "Platba", desc: "Dokončite nákup a zaplaťte.", isFinal: true },
+];
+
+/* Bead positions on the river — the SVG path passes through each cx,cy */
+const beads = [
+  { cx: 90,  cy: 70,  label: "bottom" as const },
+  { cx: 380, cy: 70,  label: "bottom" as const },
+  { cx: 720, cy: 130, label: "top" as const },
+  { cx: 280, cy: 210, label: "bottom" as const },
+  { cx: 620, cy: 270, label: "top" as const },
+  { cx: 910, cy: 310, label: "top" as const },
 ];
 
 /*
- * Positions along the ultra-smooth 2-wave S-curve.
- * The SVG viewBox is 1000 x 340. Steps hug the path tightly.
- * labelSide controls where text floats relative to the circle.
+ * The river path — one ultra-smooth S-curve that passes through all 6 bead positions.
+ * Two gentle waves spanning the full width. No sharp turns.
  */
-const positions: Array<{
-  cx: number; cy: number;
-  labelSide: "right" | "left" | "bottom";
-}> = [
-  { cx: 80,  cy: 60,  labelSide: "right" },
-  { cx: 420, cy: 60,  labelSide: "right" },
-  { cx: 780, cy: 110, labelSide: "left" },
-  { cx: 220, cy: 200, labelSide: "right" },
-  { cx: 580, cy: 260, labelSide: "left" },
-  { cx: 880, cy: 300, labelSide: "bottom" },
-];
+const RIVER_PATH =
+  "M90,70 C200,70 280,70 380,70 C520,70 600,70 720,130 " +
+  "C820,180 820,200 720,210 C580,225 380,210 280,210 " +
+  "C180,210 160,240 280,270 C420,300 540,270 620,270 " +
+  "C740,270 820,280 910,310";
 
 const HowItWorksSection = () => {
   const heading = useScrollReveal();
@@ -67,7 +70,7 @@ const HowItWorksSection = () => {
           </h2>
         </div>
 
-        {/* Desktop river */}
+        {/* Desktop: The Artistic River */}
         <div
           ref={river.ref}
           className={`hidden md:block relative transition-all duration-1000 ${
@@ -76,91 +79,92 @@ const HowItWorksSection = () => {
         >
           <svg
             className="w-full"
-            viewBox="0 0 1000 340"
+            viewBox="0 0 1000 380"
             fill="none"
             preserveAspectRatio="xMidYMid meet"
           >
-            {/* Ultra-smooth 2-wave S-curve — large gentle arcs */}
+            {/* Subtle brand shapes floating in the bends */}
+            <ellipse cx="550" cy="150" rx="60" ry="40" fill="hsl(var(--mollvero-beige))" opacity="0.12" />
+            <ellipse cx="160" cy="250" rx="45" ry="30" fill="hsl(var(--mollvero-yellow))" opacity="0.08" />
+            <circle cx="830" cy="240" r="35" fill="hsl(var(--mollvero-green-light))" opacity="0.07" />
+
+            {/* The River — thick, elegant dashed line */}
             <path
-              d="M60,60
-                 C200,60 300,60 450,60
-                 Q600,60 750,110
-                 Q900,160 750,200
-                 Q600,240 450,250
-                 Q300,260 400,280
-                 Q550,300 900,300"
+              d={RIVER_PATH}
               stroke="hsl(var(--mollvero-coral))"
-              strokeWidth="3"
-              strokeDasharray="14 10"
+              strokeWidth="4"
+              strokeDasharray="16 10"
               strokeLinecap="round"
-              opacity="0.28"
+              opacity="0.3"
             />
 
-            {/* End flourish */}
-            <circle cx="900" cy="300" r="8" fill="hsl(var(--mollvero-coral))" opacity="0.15" />
-            <circle cx="900" cy="300" r="16" stroke="hsl(var(--mollvero-coral))" strokeWidth="1.5" strokeDasharray="4 4" fill="none" opacity="0.15" />
+            {/* End flourish — concentric rings at step 6 */}
+            <circle cx="910" cy="310" r="30" stroke="hsl(var(--mollvero-coral))" strokeWidth="1" strokeDasharray="4 4" fill="none" opacity="0.15" />
+            <circle cx="910" cy="310" r="42" stroke="hsl(var(--mollvero-coral))" strokeWidth="0.8" strokeDasharray="3 5" fill="none" opacity="0.1" />
 
-            {/* Step markers directly on the path */}
-            {positions.map((pos, i) => {
+            {/* Beads — number circles sitting ON the river */}
+            {beads.map((b, i) => {
               const step = steps[i];
-              const isFinal = "isFinal" in step && step.isFinal;
+              const isFinal = step.isFinal;
+              const r = 24;
+
               return (
                 <g
                   key={i}
-                  className={`transition-all duration-700 ease-out ${
-                    river.isVisible ? "opacity-100" : "opacity-0"
-                  }`}
-                  style={{ transitionDelay: river.isVisible ? `${i * 0.12}s` : "0s" }}
+                  className="transition-all duration-700 ease-out"
+                  style={{
+                    opacity: river.isVisible ? 1 : 0,
+                    transform: river.isVisible ? "translateY(0)" : "translateY(8px)",
+                    transitionDelay: river.isVisible ? `${i * 0.13}s` : "0s",
+                  }}
                 >
-                  {/* Circle */}
+                  {/* White knockout so the dashed line doesn't show through */}
+                  <circle cx={b.cx} cy={b.cy} r={r + 2} fill="hsl(var(--background))" />
+
+                  {/* Circle border */}
                   <circle
-                    cx={pos.cx}
-                    cy={pos.cy}
-                    r="22"
-                    fill="hsl(var(--background))"
-                    stroke={isFinal ? "hsl(var(--mollvero-coral))" : "hsl(var(--primary) / 0.25)"}
-                    strokeWidth="2"
+                    cx={b.cx}
+                    cy={b.cy}
+                    r={r}
+                    fill={isFinal ? "hsl(var(--mollvero-coral) / 0.08)" : "hsl(var(--background))"}
+                    stroke={isFinal ? "hsl(var(--mollvero-coral))" : "hsl(var(--primary) / 0.2)"}
+                    strokeWidth="2.5"
                   />
+
+                  {/* Number or star */}
                   {isFinal ? (
                     <path
-                      d={`M${pos.cx},${pos.cy - 10} l3.09,6.26 6.91,1.01 -5,4.87 1.18,6.88 -6.18,-3.25 -6.18,3.25 1.18,-6.88 -5,-4.87 6.91,-1.01z`}
+                      d={`M${b.cx},${b.cy - 8}l2.5,5 5.5,.8-4,3.9 1,5.5-5-2.6-5,2.6 1-5.5-4-3.9 5.5-.8z`}
                       fill="hsl(var(--mollvero-coral))"
                     />
                   ) : (
                     <text
-                      x={pos.cx}
-                      y={pos.cy}
+                      x={b.cx}
+                      y={b.cy}
                       textAnchor="middle"
                       dominantBaseline="central"
-                      className="fill-primary text-[18px] font-bold"
+                      fill="hsl(var(--primary))"
+                      className="text-[17px] font-bold"
                       style={{ fontFamily: "inherit" }}
                     >
-                      {step.number}
+                      {step.n}
                     </text>
                   )}
 
-                  {/* Label */}
-                  {pos.labelSide === "right" && (
-                    <foreignObject x={pos.cx + 30} y={pos.cy - 20} width="160" height="60">
-                      <div>
-                        <p className="text-sm font-bold text-foreground leading-tight">{step.title}</p>
-                        <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">{step.description}</p>
-                      </div>
-                    </foreignObject>
-                  )}
-                  {pos.labelSide === "left" && (
-                    <foreignObject x={pos.cx - 190} y={pos.cy - 20} width="160" height="60">
-                      <div className="text-right">
-                        <p className="text-sm font-bold text-foreground leading-tight">{step.title}</p>
-                        <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">{step.description}</p>
-                      </div>
-                    </foreignObject>
-                  )}
-                  {pos.labelSide === "bottom" && (
-                    <foreignObject x={pos.cx - 80} y={pos.cy + 28} width="160" height="50">
+                  {/* Label — floating near the bead */}
+                  {b.label === "bottom" && (
+                    <foreignObject x={b.cx - 80} y={b.cy + r + 6} width="160" height="56">
                       <div className="text-center">
                         <p className="text-sm font-bold text-foreground leading-tight">{step.title}</p>
-                        <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">{step.description}</p>
+                        <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">{step.desc}</p>
+                      </div>
+                    </foreignObject>
+                  )}
+                  {b.label === "top" && (
+                    <foreignObject x={b.cx - 80} y={b.cy - r - 52} width="160" height="50">
+                      <div className="text-center">
+                        <p className="text-sm font-bold text-foreground leading-tight">{step.title}</p>
+                        <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">{step.desc}</p>
                       </div>
                     </foreignObject>
                   )}
@@ -203,12 +207,12 @@ const MobileStep = ({ step, index }: { step: (typeof steps)[0]; index: number })
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
           </svg>
         ) : (
-          <span className="text-sm font-bold text-primary">{step.number}</span>
+          <span className="text-sm font-bold text-primary">{step.n}</span>
         )}
       </div>
       <div>
         <h3 className="text-base font-bold text-foreground leading-tight">{step.title}</h3>
-        <p className="text-sm text-muted-foreground leading-snug mt-0.5">{step.description}</p>
+        <p className="text-sm text-muted-foreground leading-snug mt-0.5">{step.desc}</p>
       </div>
     </div>
   );
