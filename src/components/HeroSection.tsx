@@ -88,7 +88,7 @@ const HeroSection = () => {
                 href={CTA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-full bg-mollvero-coral text-white font-semibold text-base transition-all duration-300 hover:scale-[1.04] hover:shadow-2xl hover:shadow-mollvero-coral/30 hover:brightness-110"
+                className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-md bg-mollvero-coral text-white font-semibold text-base transition-all duration-300 hover:scale-[1.04] hover:shadow-2xl hover:shadow-mollvero-coral/30 hover:brightness-110"
               >
                 Chcem zľavu 30% →
               </a>
