@@ -119,21 +119,35 @@ const HowItWorksSection = () => {
             fill="none"
             preserveAspectRatio="xMidYMid meet"
           >
-            {/* River path with draw animation */}
+            {/* Dashed river with draw-reveal animation */}
+            <defs>
+              <mask id="river-reveal">
+                <path
+                  ref={measuredRef}
+                  d={RIVER}
+                  stroke="white"
+                  strokeWidth="8"
+                  strokeLinecap="round"
+                  fill="none"
+                  strokeDasharray={pathLen || 2000}
+                  strokeDashoffset={river.isVisible ? 0 : (pathLen || 2000)}
+                  style={{
+                    transition: river.isVisible
+                      ? "stroke-dashoffset 2.5s cubic-bezier(0.4, 0, 0.2, 1)"
+                      : "none",
+                  }}
+                />
+              </mask>
+            </defs>
             <path
-              ref={measuredRef}
               d={RIVER}
               stroke="hsl(var(--mollvero-coral))"
               strokeWidth="3.5"
+              strokeDasharray="14 10"
               strokeLinecap="round"
               opacity="0.28"
-              strokeDasharray={pathLen || 2000}
-              strokeDashoffset={river.isVisible ? 0 : (pathLen || 2000)}
-              style={{
-                transition: river.isVisible
-                  ? `stroke-dashoffset 2.5s cubic-bezier(0.4, 0, 0.2, 1)`
-                  : "none",
-              }}
+              fill="none"
+              mask="url(#river-reveal)"
             />
 
             {/* Steps */}
