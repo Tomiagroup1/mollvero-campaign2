@@ -59,7 +59,7 @@ const CtaBanner = () => {
               </div>
             </div>
             <p className="text-white/70 text-sm mb-10">
-              na prvú objednávku · limitovaná akcia
+              na prvú objednávku · platí pre prvých 300 registrovaných
             </p>
 
             <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-4">
