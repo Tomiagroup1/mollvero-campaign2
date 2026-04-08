@@ -82,16 +82,25 @@ const HeroSection = () => {
               </p>
             </div>
 
-            {/* Single CTA */}
-            <div className="opacity-0 animate-scale-up" style={{ animationDelay: "0.7s" }}>
+            {/* CTAs */}
+            <div className="flex flex-wrap items-center gap-4 opacity-0 animate-scale-up" style={{ animationDelay: "0.7s" }}>
               <a
                 href={CTA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-md bg-mollvero-coral text-white font-semibold text-base transition-all duration-300 hover:scale-[1.04] hover:shadow-2xl hover:shadow-mollvero-coral/30 hover:brightness-110"
               >
-                Viac info →
+                Chcem zľavu 30% →
               </a>
+              <button
+                onClick={() => {
+                  const nextSection = document.querySelector('section:nth-of-type(2)');
+                  nextSection?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md border border-foreground/20 text-foreground font-medium text-base transition-all duration-300 hover:bg-foreground/5"
+              >
+                Viac info ↓
+              </button>
             </div>
           </div>
 
