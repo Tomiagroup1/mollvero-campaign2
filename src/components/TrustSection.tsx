@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import reference2 from "@/assets/reference-2.jpg";
+import benefitMaterialy from "@/assets/benefit-materialy.jpg";
+import benefitVyroba from "@/assets/benefit-vyroba.jpg";
 
 const testimonials = [
   {
@@ -18,6 +21,8 @@ const testimonials = [
     author: "Viktória K.",
   },
 ];
+
+const galleryImages = [reference2, benefitMaterialy, benefitVyroba];
 
 const TrustSection = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -79,64 +84,84 @@ const TrustSection = () => {
           </p>
         </div>
 
-        {/* Testimonial card */}
+        {/* Content: Quote + Gallery */}
         <div
-          className={`max-w-3xl mx-auto transition-all duration-700 ${
+          className={`grid lg:grid-cols-5 gap-8 items-start transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
           style={{ transitionDelay: isVisible ? "0.3s" : "0s" }}
         >
-          <div className="relative bg-muted/40 rounded-3xl p-8 md:p-12 border-l-4 border-primary/40">
-            {/* Quote mark */}
-            <span className="text-primary text-5xl md:text-6xl font-bold leading-none select-none absolute top-6 left-8 md:top-8 md:left-10">
-              &#8220;&#8220;
-            </span>
+          {/* Quote card - takes 3 cols */}
+          <div className="lg:col-span-3">
+            <div className="relative bg-muted/40 rounded-3xl p-8 md:p-12 border-l-4 border-primary/40">
+              {/* Quote mark */}
+              <span className="text-primary text-5xl md:text-6xl font-bold leading-none select-none absolute top-6 left-8 md:top-8 md:left-10">
+                &#8220;&#8220;
+              </span>
 
-            <div className="pt-10 md:pt-8 md:pl-8">
-              <p
-                key={current}
-                className="text-muted-foreground text-lg md:text-xl leading-relaxed italic animate-fade-in"
+              <div className="pt-10 md:pt-8 md:pl-8">
+                <p
+                  key={current}
+                  className="text-muted-foreground text-lg md:text-xl leading-relaxed italic animate-fade-in"
+                >
+                  {testimonials[current].quote}
+                </p>
+                <p className="mt-8 font-bold text-foreground text-base">
+                  {testimonials[current].author}
+                </p>
+              </div>
+            </div>
+
+            {/* Navigation */}
+            <div className="flex items-center gap-3 mt-8">
+              <button
+                onClick={prev}
+                className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:opacity-80 transition-opacity"
+                aria-label="Predchádzajúca recenzia"
               >
-                {testimonials[current].quote}
-              </p>
-              <p className="mt-8 font-bold text-foreground text-base">
-                {testimonials[current].author}
-              </p>
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+
+              <div className="flex items-center gap-2">
+                {testimonials.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrent(i)}
+                    className={`transition-all duration-300 rounded-full ${
+                      i === current
+                        ? "w-8 h-2 bg-primary"
+                        : "w-2 h-2 bg-primary/30"
+                    }`}
+                    aria-label={`Recenzia ${i + 1}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={next}
+                className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:opacity-80 transition-opacity"
+                aria-label="Ďalšia recenzia"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
             </div>
           </div>
 
-          {/* Navigation */}
-          <div className="flex items-center justify-center gap-3 mt-8">
-            <button
-              onClick={prev}
-              className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:opacity-80 transition-opacity"
-              aria-label="Predchádzajúca recenzia"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-
-            <div className="flex items-center gap-2">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
-                  className={`transition-all duration-300 rounded-full ${
-                    i === current
-                      ? "w-8 h-2 bg-primary"
-                      : "w-2 h-2 bg-primary/30"
-                  }`}
-                  aria-label={`Recenzia ${i + 1}`}
+          {/* Gallery images - takes 2 cols */}
+          <div className="lg:col-span-2 grid grid-cols-3 gap-3 self-stretch">
+            {galleryImages.map((img, i) => (
+              <div
+                key={i}
+                className="rounded-2xl overflow-hidden group"
+              >
+                <img
+                  src={img}
+                  alt={`Realizácia ${i + 1}`}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-              ))}
-            </div>
-
-            <button
-              onClick={next}
-              className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:opacity-80 transition-opacity"
-              aria-label="Ďalšia recenzia"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
+              </div>
+            ))}
           </div>
         </div>
       </div>
