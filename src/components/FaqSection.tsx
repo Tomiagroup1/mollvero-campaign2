@@ -17,11 +17,11 @@ const faqs = [
   },
   {
     q: "Aký nábytok si môžem nakonfigurovať?",
-    a: "Skrine, kuchynské linky, obývačkové steny, spálňový nábytok a ďalšie. Všetko na mieru.",
+    a: "Skrine, obývačkové steny, spálňový nábytok a ďalšie. Všetko na mieru.",
   },
   {
     q: "Aká je dodacia doba?",
-    a: "Do 14 dní od potvrdenia objednávky máte nábytok doma.",
+    a: "Do 14 dní od prijatia platby máte nábytok doma.",
   },
   {
     q: "Čo ak si neviem poradiť s konfigurátorom?",

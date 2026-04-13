@@ -44,7 +44,7 @@ const HeroSection = () => {
                     paddingRight: "0.15em",
                   }}
                 >
-                  30
+                  20
                 </span>
                 <div className="pb-2 md:pb-4">
                   <span
@@ -61,7 +61,7 @@ const HeroSection = () => {
                 </div>
               </div>
               <p className="text-sm font-medium text-muted-foreground tracking-widest uppercase mt-1">
-                na prvú objednávku · platí pre prvých 300 registrovaných
+                na prvú objednávku + doprava zdarma · platí pre prvých 300 registrovaných
               </p>
             </div>
 
@@ -76,9 +76,9 @@ const HeroSection = () => {
                 </span>
               </h1>
               <p className="text-muted-foreground text-base md:text-lg max-w-lg leading-relaxed">
-                Nakonfigurujte si skrine, kuchyne či obývačky presne podľa vašich predstáv
+                Nakonfigurujte si skrine či obývačky presne podľa vašich predstáv
                 priamo z pohodlia domova. Ako prví získate prístup do nášho konfigurátora
-                a 30&nbsp;% zľavu na prvú objednávku.
+                a 20&nbsp;% zľavu + dopravu zdarma na prvú objednávku.
               </p>
             </div>
 
@@ -90,7 +90,7 @@ const HeroSection = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-md bg-mollvero-coral text-white font-semibold text-base transition-all duration-300 hover:scale-[1.04] hover:shadow-2xl hover:shadow-mollvero-coral/30 hover:brightness-110"
               >
-                Chcem zľavu 30% →
+                Chcem zľavu 20% →
               </a>
               <button
                 onClick={() => {

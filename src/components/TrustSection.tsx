@@ -7,17 +7,17 @@ import benefitVyroba from "@/assets/benefit-vyroba.jpg";
 const testimonials = [
   {
     quote:
-      "Výborný pomer cena/kvalita. Vynikajúci a profesionálny prístup od prvého stretnutia, po ktorom naše všeobecné predstavy zhmotnili do originálneho dizajnu. Následne realizáciu s nami priebežne komunikovali až po samotnú montáž. Veľmi oceňujem aj vysokú mieru flexibility, vďaka ktorej boli ochotní zapracovať naše dodatočné pripomienky do rozpracovaného návrhu. Určite sa v budúcnosti obrátim na LUKAMASIV opäť a môžem iba odporučiť.",
+      "Výborný pomer cena/kvalita. Vynikajúci a profesionálny prístup od prvého stretnutia, po ktorom naše všeobecné predstavy zhmotnili do originálneho dizajnu. Následne realizáciu s nami priebežne komunikovali až po samotnú montáž. Veľmi oceňujem aj vysokú mieru flexibility, vďaka ktorej boli ochotní zapracovať naše dodatočné pripomienky do rozpracovaného návrhu. Určite sa v budúcnosti obrátim na Mollvero opäť a môžem iba odporučiť.",
     author: "Štefan B.",
   },
   {
     quote:
-      "S firmou Lukamasiv sme mali veľmi dobrú skúsenosť. Oceňujem rýchlu komunikáciu hneď od začiatku, profesionálny a ľudský prístup dizajnérky, ktorá vedela usmerniť a pomôcť pri rozhodovaní, a tiež krásne a rýchlo pripravené vizualizácie. Termíny boli dodržané, čo bolo pre nás veľmi dôležité a počas celej spolupráce bola ochota všetko vysvetliť či doladiť podľa potreby. Montáž prebehla dobre a aj keď sa objavili drobné chyby, firma ich bez problémov ochotne vyriešila. Celkovo hodnotím spoluprácu pozitívne a firmu viem určite odporučiť.",
+      "S firmou Mollvero sme mali veľmi dobrú skúsenosť. Oceňujem rýchlu komunikáciu hneď od začiatku, profesionálny a ľudský prístup dizajnérky, ktorá vedela usmerniť a pomôcť pri rozhodovaní, a tiež krásne a rýchlo pripravené vizualizácie. Termíny boli dodržané, čo bolo pre nás veľmi dôležité a počas celej spolupráce bola ochota všetko vysvetliť či doladiť podľa potreby. Montáž prebehla dobre a aj keď sa objavili drobné chyby, firma ich bez problémov ochotne vyriešila. Celkovo hodnotím spoluprácu pozitívne a firmu viem určite odporučiť.",
     author: "Petra F.",
   },
   {
     quote:
-      "Realizovali pre nás dve zákazky na mieru – skrinku pod TV a regály do komory. Pri skrinke sme mali špecifické požiadavky, ktoré boli do detailu splnené. Materiál je vysokej kvality a výsledné spracovanie po montáži bolo precízne a presné. Pomer cena kvalita vynikajúci. Aj pri regáloch do komory sme mali konkrétne požiadavky, ktoré boli rovnako splnené v prvotriednej kvalite. Oceňujeme krátku dodaciu lehotu, rýchlu komunikáciu a skvelý prístup dizajnérky. V budúcnosti sa na firmu LUKAMASIV určite obrátime opäť.",
+      "Realizovali pre nás dve zákazky na mieru – skrinku pod TV a regály do komory. Pri skrinke sme mali špecifické požiadavky, ktoré boli do detailu splnené. Materiál je vysokej kvality a výsledné spracovanie po montáži bolo precízne a presné. Pomer cena kvalita vynikajúci. Aj pri regáloch do komory sme mali konkrétne požiadavky, ktoré boli rovnako splnené v prvotriednej kvalite. Oceňujeme krátku dodaciu lehotu, rýchlu komunikáciu a skvelý prístup dizajnérky. V budúcnosti sa na firmu Mollvero určite obrátime opäť.",
     author: "Viktória K.",
   },
 ];

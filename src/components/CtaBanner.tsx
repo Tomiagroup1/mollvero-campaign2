@@ -54,14 +54,14 @@ const CtaBanner = () => {
           <div className="flex flex-col justify-center py-16 lg:py-20 lg:pl-16">
             {/* Discount */}
             <div className="flex items-baseline gap-2 mb-2">
-              <span className="text-7xl md:text-8xl font-bold text-white leading-none">30</span>
+              <span className="text-7xl md:text-8xl font-bold text-white leading-none">20</span>
               <div className="flex flex-col">
                 <span className="text-2xl md:text-3xl font-bold text-white">%</span>
                 <span className="text-lg font-bold text-white/90">zľava</span>
               </div>
             </div>
             <p className="text-white/70 text-sm mb-10">
-              na prvú objednávku · platí pre prvých 300 registrovaných
+              na prvú objednávku + doprava zdarma · platí pre prvých 300 registrovaných
             </p>
 
             <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-4">
@@ -71,7 +71,7 @@ const CtaBanner = () => {
             </h2>
 
             <p className="text-white/85 text-base md:text-lg leading-relaxed max-w-md mb-6">
-              Nakonfigurujte si skrine, kuchyne či obývačky presne podľa vašich predstáv priamo z pohodlia domova. Ako prví získate prístup do nášho konfigurátora a&nbsp;30&nbsp;% zľavu na prvú objednávku.
+              Nakonfigurujte si skrine či obývačky presne podľa vašich predstáv priamo z pohodlia domova. Ako prví získate prístup do nášho konfigurátora a&nbsp;20&nbsp;% zľavu + dopravu zdarma na prvú objednávku.
             </p>
 
             {/* Mobile benefits */}
@@ -93,7 +93,7 @@ const CtaBanner = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-white text-foreground font-bold px-8 py-4 rounded-full text-lg hover:bg-white/90 transition-colors w-fit"
             >
-              Chcem zľavu 30 %
+              Chcem zľavu 20 %
               <ArrowRight className="w-5 h-5" />
             </a>
           </div>

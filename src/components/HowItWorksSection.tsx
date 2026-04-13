@@ -21,7 +21,7 @@ const steps = [
   {
     n: 4,
     title: "Dodanie",
-    desc: "Hotový nábytok vám doručíme priamo domov v dohodnutom termíne.",
+    desc: "Hotový nábytok si vyzdvihnete alebo vám doručíme priamo domov v dohodnutom termíne.",
   },
 ];
 const HowItWorksSection = () => {
