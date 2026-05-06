@@ -1,22 +1,15 @@
-Našiel som príčinu: v `index.html` sú momentálne dve favicon definície. Prvá ukazuje na `/favicon.png`, ale nižšie zostal ešte starý riadok:
+Navrhujem upraviť favicon tak, aby bol čitateľný aj v malom rozmere v Chrome tabe. Aktuálny súbor `public/favicon.png` je čierne logo na bielom pozadí, ale v tabe je logo príliš jemné/malé, takže používateľsky pôsobí ako biely prázdny štvorček.
 
-```html
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-```
+Plán:
+1. Vytvoriť novú favicon verziu z dodaného čierneho loga s výraznejším výrezom:
+   - odstrániť zbytočné biele okraje,
+   - ponechať biele pozadie kvôli viditeľnosti v tmavých aj svetlých témach,
+   - logo zväčšiť v rámci štvorca, aby bolo viditeľné v 16×16/32×32 pixeloch.
+2. Pridať aj samostatný `/favicon.ico`, pretože niektoré prehliadače alebo bookmarky stále automaticky pýtajú práve `/favicon.ico` a môžu ignorovať len PNG link.
+3. Upraviť `index.html` tak, aby explicitne odkazoval na obe verzie:
+   - `/favicon.ico` pre klasické prehliadače/bookmarky,
+   - `/favicon.png` ako PNG fallback,
+   - `/apple-touch-icon.png` pre Apple zariadenia.
+4. Overiť výsledok vizuálne na výslednom súbore favicon, či už v malom náhľade nepôsobí ako biely prázdny štvorček.
 
-Prehliadač si často vyberie poslednú definíciu alebo fallback `/favicon.ico`. Keďže `favicon.ico` už v projekte nie je, hosting/browser môže zobrazovať default Lovable favicon.
-
-Plán opravy:
-
-1. Odstránim duplicitný starý riadok s `/favicon.ico` z `index.html`.
-2. Nechám iba Mollvero favicon PNG:
-   ```html
-   <link rel="icon" href="/favicon.png" type="image/png" />
-   ```
-3. Doplním aj `apple-touch-icon`, aby sa správne zobrazovala ikona pri bookmarkoch / pridávaní na mobil:
-   ```html
-   <link rel="apple-touch-icon" href="/favicon.png" />
-   ```
-4. Skontrolujem, že v `public/` ostáva iba správny `favicon.png` a už sa nikde nereferencuje `/favicon.ico`.
-
-Po schválení to upravím priamo v kóde. Potom bude treba publikovanú verziu znova aktualizovať, pretože ide o frontend zmenu.
+Po schválení to upravím priamo v projekte. Potom bude treba publikovanú verziu aktualizovať cez Publish → Update; favicon sa v prehliadači môže ešte chvíľu cacheovať, takže kontrola je najspoľahlivejšia v anonymnom okne alebo po otvorení `/favicon.ico` a `/favicon.png` priamo.
