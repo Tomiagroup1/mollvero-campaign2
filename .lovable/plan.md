@@ -1,15 +1,31 @@
-Navrhujem upraviť favicon tak, aby bol čitateľný aj v malom rozmere v Chrome tabe. Aktuálny súbor `public/favicon.png` je čierne logo na bielom pozadí, ale v tabe je logo príliš jemné/malé, takže používateľsky pôsobí ako biely prázdny štvorček.
+## Problém
 
-Plán:
-1. Vytvoriť novú favicon verziu z dodaného čierneho loga s výraznejším výrezom:
-   - odstrániť zbytočné biele okraje,
-   - ponechať biele pozadie kvôli viditeľnosti v tmavých aj svetlých témach,
-   - logo zväčšiť v rámci štvorca, aby bolo viditeľné v 16×16/32×32 pixeloch.
-2. Pridať aj samostatný `/favicon.ico`, pretože niektoré prehliadače alebo bookmarky stále automaticky pýtajú práve `/favicon.ico` a môžu ignorovať len PNG link.
-3. Upraviť `index.html` tak, aby explicitne odkazoval na obe verzie:
-   - `/favicon.ico` pre klasické prehliadače/bookmarky,
-   - `/favicon.png` ako PNG fallback,
-   - `/apple-touch-icon.png` pre Apple zariadenia.
-4. Overiť výsledok vizuálne na výslednom súbore favicon, či už v malom náhľade nepôsobí ako biely prázdny štvorček.
+Edge na desktope už zobrazuje nový favicon, ale Safari a Chrome na desktope stále ukazujú staré Lovable logo. Mobil je v poriadku.
 
-Po schválení to upravím priamo v projekte. Potom bude treba publikovanú verziu aktualizovať cez Publish → Update; favicon sa v prehliadači môže ešte chvíľu cacheovať, takže kontrola je najspoľahlivejšia v anonymnom okne alebo po otvorení `/favicon.ico` a `/favicon.png` priamo.
+**Príčina:** Desktopové prehliadače (hlavne Safari a Chrome) si automaticky pýtajú súbor `/favicon.ico` z root cesty — aj keď v HTML naň nie je odkaz. Tento súbor sme v predchádzajúcom kroku zmazali, takže prehliadač dostane 404 a použije svoju starú **cache verziu** Lovable favicony, ktorú má uloženú niekedy aj mesiace. Verzionovanie cez `?v=2` na PNG súbore tomuto nezabráni, pretože sa týka iného súboru.
+
+Mobilné prehliadače sa správajú inak — riadia sa `apple-touch-icon` linkom v HTML, preto tam nový logo funguje.
+
+## Riešenie
+
+1. **Znovu vygenerovať `public/favicon.ico`** z aktuálneho čierneho Mollvero stromu (multi-resolution: 16, 32, 48 px), aby požiadavka prehliadača na `/favicon.ico` vrátila nový logo namiesto 404.
+2. **Pridať explicitný link v `index.html`:**
+   ```html
+   <link rel="icon" href="/favicon.ico?v=3" sizes="any" />
+   ```
+   Query string `?v=3` prinúti Safari a Chrome stiahnuť novú verziu namiesto použitia cache.
+3. **Posunúť verziu aj na PNG linkoch** na `?v=3` pre konzistenciu.
+
+## Po nasadení
+
+Klikni **Publish → Update**. Potom v Safari/Chrome:
+- Buď počkaj pár minút a daj **Cmd+Shift+R** (hard refresh).
+- Alebo otvor stránku v **inkognito okne**, kde nie je cache — tam uvidíš novú ikonku okamžite.
+
+V už otvorenej karte sa favicon často nezmení, kým kartu nezatvoríš a neotvoríš znova (Safari je obzvlášť tvrdohlavé).
+
+## Technické detaily
+
+- Vstup: `public/favicon-mollvero-v2.png` (256×256 čierny strom).
+- Nástroj: ImageMagick — `convert favicon-mollvero-v2.png -define icon:auto-resize=48,32,16 favicon.ico`.
+- Zmeny súborov: vytvorí sa `public/favicon.ico`, upraví sa `index.html` (3 riadky `<link>`).
